@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <title>Project Management Report</title>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+  <div class="container-fluid">
+
+    <div class="panel-group" id="accordion">
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Data Design
+              </a>
+            </h4>
+          </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <h5>Data Structure</h5>
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+              <div class="col-md-6">
+                <h5>ERD</h5>
+                <img src="http://wc1.smartdraw.com/resources/tutorials/images/erdexample.gif" class="img-responsive" alt="ERD">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              Application Design
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="row">
+
+              <div class="col-md-6">
+                <h5>Application Structure</h5>
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+              <div class="col-md-6">
+                <h5>Illustration</h5>
+                <img src="http://www.sentex.net/~pkomisar/Ruby/Rails2.png" class="img-responsive" alt="app-illustration">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              Requirements
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+              <div class="row">
+
+              <div class="col-md-8">
+                <h5>Iteration Requirements</h5>
+
+                  <!-- Requirements -->
+                   <div class="panel-group" id="requirements">
+                     <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#requirements" href="#requirementsOne">
+                            1) Static Root Page and Sessionless Content
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="requirementsOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p class="bg-info">Use Case</p>
+                            <p>As a visitor to 'crappy-book-store.com', a book store service, I want to see the typical <strong>sessionless conent</strong> of a service-based website.
+                            I want to see a <strong>root page</strong> where I see a <strong>summary of the service offering</strong> and <strong>links for further information</strong>.</p>
+                            <p>
+                            I want to see an <strong>'about' navigation link</strong>, which will display <strong>further information on the offering</strong>.
+                            I want to see a <strong>'help' navigation link</strong>, which will display <strong>helpful information around the offering</strong>.
+                            I want to see a <strong>'sign up' navigation link</strong>, which will display a <strong>sign up form</strong>.
+                            </p>
+
+                          <p class="bg-info">User Stories</p>
+                            <blockquote>
+                              <p class="small">As a visitor to the site</p>
+                              <p class="small">I navigate to "/"</p>
+                              <p class="small">I see the "h1" with with the text "Crappy-Book-Store.com"</p>
+                              <p class="small">I see the "a" with with the text "Sign in"</p>
+                              <p class="small">I see the site's static top navigation bar items (about, help, sign up)</p>
+                              <p class="small">I topbar navigate to the about page</p>
+                              <p class="small">I see the about page</p>
+                              <p class="small">I topbar navigate to the help page</p>
+                              <p class="small">I see the help page</p>
+                              <p class="small">I topbar navigate to the sign up page</p>
+                              <p class="small">I see the sign up page</p>
+                            </blockquote>
+
+                          <p class="bg-info">Trackable Works</p>
+                              <p class="text-success">Commits:</p>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#requirements" href="#requirementsTwo">
+                            2) Sign Up/Out Customer
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="requirementsTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <p class="bg-info">Use Case</p>
+                            <p>As a visitor, I want to <strong>sign up</strong> to this service.
+                            While on the root page, I click a link to sign up</p>
+                            <p>
+                            I want to see a <strong>sign up 'form'</strong>, which will requires my user details.
+                            After sign up I want to be <strong>automatically logged in</strong> and <strong>redirected to '/home'</strong>.
+                            On the '/home' page, I want to see a <strong>'sign out' navigation link, which signs me out and redirects me to '/login'</strong>.
+                            </p>
+
+                          <p class="bg-info">User Stories</p>
+                            <blockquote>
+                              <p class="small">As a visitor to the site</p>
+                              <p class="small">I navigate to "/"</p>
+                              <p>TODO</p>
+
+                            </blockquote>
+
+                          <p class="bg-info">Trackable Works</p>
+                              <p class="text-success">Commits:</p> TODO
+                        </div>
+                      </div>
+                    </div>
+
+
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <h5>Activity</h5>
+                    <img src="https://github-camo.global.ssl.fastly.net/c6ad360cfb7f2af20c4e7e8eb1c085c2dbe37cdd/68747470733a2f2f6769746875622d696d616765732e73332e616d617a6f6e6177732e636f6d2f626c6f672f323031322f6772617068732e636f6d6d6974732e706e67" class="img-responsive" alt="app-illustration">
+                    </div>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
