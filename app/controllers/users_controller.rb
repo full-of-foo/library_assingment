@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in @user
       flash[:notice] = "Welcome to the Crappy-Book-Store.com!"
       redirect_to @user
     else

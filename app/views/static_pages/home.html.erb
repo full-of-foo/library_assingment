@@ -1,6 +1,17 @@
-<div class="jumbotron">
-  <h1>A crappy book store, <em>but as an online service</em> <span style="color:red;"><3</span></h1>
-  <p>A quick preview of everything Bootstrap has to offer.</p>
-  <div id="push"></div>
-  <p><a class="btn btn-primary btn-large">Sign In&raquo;</a></p>
+<div class="row">
+<div class="col-lg-10 col-lg-offset-1">
+  <div class="jumbotron">
+    <h1>A crappy book store, <em>but as an online service</em> <span style="color:red;"><3</span></h1>
+    <div id="small-push"></div>
+
+    <div class="col-lg-offset-1">
+      <p><em>"Dayman (ah-ah-ah)...fighter of the nightman (ah-ah-ah)...champion of the sun (ah-ah-ah)</p>
+      <p>...you're a <span style="color:red;">master of karate</span>...and <span style="color:red;">friendship</span>...<span style="color:red;">for everyone</span>"</em></p>
+    </div>
+
+    <div id="half-push"></div>
+    <p><%= link_to "Sign In &raquo;".html_safe, signin_path, class: "btn btn-primary btn-large" %></p>
+  </div>
+</div>
+<div class="col-lg-2"></div>
 </div>

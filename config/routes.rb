@@ -5,7 +5,11 @@ LibraryAssignment::Application.routes.draw do
   match '/help',   to: 'static_pages#help',  via: 'get'
   match '/about',  to: 'static_pages#about', via: 'get'
   # user
-  match '/signup', to: 'users#new',          via: 'get'
   resources :users, only: [:index, :create, :show, :update, :delete]
+  #session
+  match '/signup',  to: 'users#new',            via: 'get'
+  resources :sessions
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
 end
