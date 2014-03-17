@@ -1,0 +1,36 @@
+<% provide(:title, @user.full_name) %>
+
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading user-show-panel-header">
+        <h3>Showing Profile: <%= @user.full_name %></h3>
+        <span class="pull-right user-show-grav-container"><%= gravatar_for @user %></span>
+      </div>
+      <div class="panel-body clearfix user-show-panel">
+        <div class="col-lg-4 pull-right">
+          <div id="small-push"></div>
+          <img src="http://i0.kym-cdn.com/photos/images/original/000/114/779/0002.gif" class="img-responsive img-circle" alt="kitty">
+        </div>
+
+        <div id="small-push"></div>
+        <span class="text-info">First Name:</span>
+        <p><%= @user.first_name %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Surname:</span>
+        <p><%= @user.first_name %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Email:</span>
+        <p><%= @user.email %></p>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
