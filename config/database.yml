@@ -6,7 +6,7 @@ development:
   username: anthonytroy
   password:
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: library_assignment_test
@@ -21,3 +21,6 @@ production:
   pool: 5
   username: anthonytroy
   password:
+
+cucumber:
+  <<: *test

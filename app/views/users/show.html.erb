@@ -10,8 +10,10 @@
       </div>
       <div class="panel-body clearfix user-show-panel">
         <div class="col-lg-4 pull-right">
-          <div id="small-push"></div>
-          <img src="http://i0.kym-cdn.com/photos/images/original/000/114/779/0002.gif" class="img-responsive img-circle" alt="kitty">
+          <% if current_user?(@user) %>
+            <%= link_to "Update", sti_user_path(@user.type, @user, "edit"), class: "btn btn-success" %>
+            <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <% end %>
         </div>
 
         <div id="small-push"></div>
@@ -20,13 +22,11 @@
 
         <div id="small-push"></div>
         <span class="text-info">Surname:</span>
-        <p><%= @user.first_name %></p>
+        <p><%= @user.surname %></p>
 
         <div id="small-push"></div>
         <span class="text-info">Email:</span>
         <p><%= @user.email %></p>
-
-
 
       </div>
     </div>

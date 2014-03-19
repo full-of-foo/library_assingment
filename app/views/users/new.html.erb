@@ -9,7 +9,7 @@
       <div class="panel-body clearfix">
         <%= render 'shared/error_messages' %>
 
-        <%= form_for(@user) do |f| %>
+        <%= form_for(@user, url: sti_user_path(@user.type), method: :post) do |f| %>
 
             <div class="col-lg-7 col-lg-offset-2">
               <div id="small-push"></div>

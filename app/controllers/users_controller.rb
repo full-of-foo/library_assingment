@@ -1,27 +1,23 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_action :signed_in_user, only: [:index, :show]
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      sign_in @user
-      flash[:notice] = "Welcome to the Crappy-Book-Store.com!"
-      redirect_to @user
-    else
-      render "new"
-    end
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
   end
 
-  private
+  def destroy
+    user            = User.find(params[:id])
+    is_current_user = current_user?(user)
+    redirect_url    = is_current_user ? signin_url : users_url
 
-    def user_params
-      params.require(:user).permit(:first_name, :email, :password, :surname,
-                                    :password_confirmation)
-    end
+    user.destroy
+
+    flash[:success] = "Account deleted"
+    redirect_to redirect_url
+  end
+
 end

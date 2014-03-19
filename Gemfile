@@ -15,15 +15,21 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails", :git => "https://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "bootstrap3"
 
+gem 'will_paginate', '3.0.4'
+gem 'will_paginate-bootstrap'
+
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'faker'
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
 end
 

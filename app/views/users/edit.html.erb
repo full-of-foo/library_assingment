@@ -1,0 +1,51 @@
+<% provide(:title, "Edit Account") %>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading user-show-panel-header">
+        <h3>Editing Profile: <%= @user.full_name %></h3>
+        <a id="change-grav" href="http://gravatar.com/emails"><span class="pull-right user-show-grav-container"><%= gravatar_for @user %></span></a>
+      </div>
+      <%= form_for(@user, url: sti_user_path(@user.type, @user), method: :patch) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <div class="panel-body clearfix user-show-panel">
+          <div class="col-lg-4 pull-right">
+            <div id="small-push"></div>
+              <img src="http://i0.kym-cdn.com/photos/images/original/000/114/779/0002.gif" class="img-responsive img-circle" alt="kitty">
+          </div>
+
+          <div id="small-push"></div>
+          <span class="text-info">First Name:</span>
+          <p><%= f.text_field :first_name %></p>
+
+          <div id="small-push"></div>
+          <span class="text-info">Surname:</span>
+          <p><%= f.text_field :surname %></p>
+
+          <div id="small-push"></div>
+          <span class="text-info">Email:</span>
+          <p><%= f.text_field :email %></p>
+
+          <div id="small-push"></div>
+          <span class="text-info">Password:</span>
+          <p><%= f.password_field :password %></p>
+
+          <div id="small-push"></div>
+          <span class="text-info">Confirmation:</span>
+          <p><%= f.password_field :password_confirmation %></p>
+
+          <div id="small-push"></div>
+          <div class="col-lg-offset-4">
+            <div id="small-push"></div>
+            <%= f.submit "Update Account", class: "btn btn-large btn-primary" %>
+          </div>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
