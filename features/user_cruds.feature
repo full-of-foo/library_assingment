@@ -30,12 +30,11 @@ Scenario: Users index as admin
   Then I visit "/users"
   And I see the users page
 
+@allow-rescue
 @user_cruds-5
 Scenario: Users index as customer
   Given I am signed in as a customer
-  And the customers and admins are populated
-  Then I visit "/users"
-  And I see the users page
+  Then I visit "/users" and get a 404
 
 @user_cruds-6
 Scenario: Admin delete customer

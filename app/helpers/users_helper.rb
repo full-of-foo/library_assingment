@@ -36,4 +36,8 @@ module UsersHelper
     redirect_to(root_url) unless current_user?(@user)
   end
 
+  def permitted_admin
+    not_found if current_user.type != "Admin"
+  end
+
 end

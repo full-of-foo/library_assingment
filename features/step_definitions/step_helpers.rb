@@ -3,6 +3,11 @@ Given /^I visit "(.+)"$/ do |page_name|
   visit page_name
 end
 
+Given /^I visit "(.+)" and get a 404$/ do |page_name|
+  visit page_name
+  page.status_code.should be(404)
+end
+
 Given /^I press "([^\"]*)"$/ do |button|
   click_button(button)
 end
