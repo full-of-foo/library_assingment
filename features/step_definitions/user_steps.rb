@@ -24,6 +24,17 @@ Given(/^I submit the customer signup$/) do
   step('I press "Create my account"')
 end
 
+Given(/^I submit a new admin$/) do
+  @new_admin = FactoryGirl.build(:admin, email: "new_admin@foo.com")
+  step("I fill in \"user_email\" with \"#{@new_admin.email}\"")
+  step("I fill in \"user_first_name\" with \"#{@new_admin.first_name}\"")
+  step("I fill in \"user_surname\" with \"#{@new_admin.surname}\"")
+  step("I fill in \"user_password\" with \"#{@new_admin.password}\"")
+  step("I fill in \"user_password_confirmation\" with \"#{@new_admin.password}\"")
+
+  step('I press "Create Admin"')
+end
+
 Given(/^I submit (a customer|an admin) update$/) do |customer_or_admin|
   user = customer_or_admin == "an admin" ? @admin : @customer
 

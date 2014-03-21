@@ -4,17 +4,15 @@ class AdminsController < ApplicationController
 
   def new
     @user = Admin.new
-    render "users/new"
   end
 
   def create
     @user = Admin.new(user_params())
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Crappy-Book-Store.com!"
+      flash[:success] = "Profile created"
       redirect_to @user
     else
-      render "users/new"
+      render "admins/new"
     end
   end
 

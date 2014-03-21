@@ -3,10 +3,12 @@
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
+      <div class="panel-heading">
         <h3>All users</h3>
+        <span class="pull-right" style="margin-top: -3pc;"><%= link_to "Enroll Admin", sti_user_path("Admin", "new"), class: "btn btn-success" %></span>
       </div>
       <div class="panel-body clearfix user-show-panel">
+        
         <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
         <% @users.each do |user| %>
 
@@ -14,7 +16,7 @@
               <li>
                 <%= gravatar_for user, size: 52 %>
                 <%= link_to user.full_name, user %>
-                <% if current_user.type == "Admin" && !current_user?(user) && user.type == "Customer" %>
+                <% if user.type == "Customer" %>
                   | <%= link_to "delete", user, method: :delete,
                                                 data: { confirm: "You sure?" } %>
                 <% end %>
@@ -24,6 +26,7 @@
         <% end %>
 
         <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      
       </div>
     </div>
   </div>

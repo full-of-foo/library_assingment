@@ -37,19 +37,22 @@ Scenario: Users index as customer
   Then I visit "/users" and get a 404
 
 @user_cruds-6
+Scenario: Admin create admin
+  Given I am signed in as a admin
+  Then I visit "/users"
+  And I should see the text "Enroll Admin"
+  Then I visit "/admins/new"
+  And I should see the text "We need you!"
+  And I submit a new admin
+  And I should see the text "Profile created"
+
+@user_cruds-7
 Scenario: Admin delete customer
   Given I am signed in as a admin
   And the customers and admins are populated
   Then I visit "/users"
   And I delete the first customer
   And I should see the text "Account deleted"
-
-@user_cruds-7
-Scenario: Customer cannot delete customer
-  Given I am signed in as a customer
-  And the customers and admins are populated
-  Then I visit "/users"
-  And I should not see the text "delete"
 
 @user_cruds-8
 Scenario: Admin delete self
