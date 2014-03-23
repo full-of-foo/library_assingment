@@ -1,0 +1,48 @@
+<% provide(:title, @customer.full_name) %>
+
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading user-show-panel-header">
+        <h3>Showing Profile: <%= @customer.full_name %></h3>
+        <span class="pull-right user-show-grav-container"><%= gravatar_for @customer %></span>
+      </div>
+      <div class="panel-body clearfix user-show-panel">
+        <div class="col-lg-4 pull-right">
+          <% if current_user?(@customer) %>
+            <%= link_to "Update", sti_user_path(@customer.type, @customer, "edit"), class: "btn btn-success" %>
+            <%= link_to "Delete Account", @customer, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+
+        <div id="small-push"></div>
+        <span class="text-info">First Name:</span>
+        <p><%= @customer.first_name %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Surname:</span>
+        <p><%= @customer.surname %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Email:</span>
+        <p><%= @customer.email %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Billing Addresses: (<%= @customer.addresses.count %>) <% if current_user?(@customer) %><%= link_to "Add", new_customer_address_path(@customer), id: "add-address", class: "btn btn-success" %><% end %>
+        </span>
+            <% if @customer.addresses.any? %>
+              <ol class="addresses">
+                <%= render @addresses %>
+              </ol>
+
+              <%= will_paginate @addresses %>
+            <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

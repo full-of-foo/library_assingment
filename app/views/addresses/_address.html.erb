@@ -1,0 +1,29 @@
+<li class="content">
+  <span><%= address.line1 %>,</span>
+
+  <% if not address.line2.blank? %>
+    <span><%= address.line2 %>,</span>
+  <% end %>
+
+  <span><%= address.city %>,</span>
+
+  <% if not address.zip.blank? %>
+    <span><%= address.zip %>,</span>
+
+  <% end %>
+
+  <span><%= address.state %>,</span>
+
+  <span><%= address.country %></span>
+
+   <% if current_user?(@customer) %>
+    <span class="pull-right">
+        <%= link_to "Update", edit_customer_address_path(@customer, address), class: "btn btn-success" %>
+        <% if @customer.addresses.count > 1 %>
+          <%= link_to "Remove", customer_address_path(@customer, address), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+        <% end %>
+    </span>
+  <% end %>
+
+
+</li>

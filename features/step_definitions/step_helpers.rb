@@ -65,6 +65,10 @@ Then /^I should not see the text "([^\"]*)"$/ do |text|
   page.should_not have_content(text)
 end
 
+Then /^I should not see the selector "([^\"]*)"$/ do |selector|
+  page.should_not have_selector(selector)
+end
+
 Then /^I should not see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
   page.should_not have_content(regexp)

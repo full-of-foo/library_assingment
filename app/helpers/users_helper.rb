@@ -23,6 +23,12 @@ module UsersHelper
                                     :password_confirmation)
   end
 
+  def signup_params
+    params.require(:signup).permit(:first_name, :email, :password, :surname,
+                                    :password_confirmation, :line1, :line2, :city, :state, :zip,
+                                  :country, :customer_id)
+  end
+
   def signed_in_user
     if !signed_in?
       store_location
@@ -33,7 +39,17 @@ module UsersHelper
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(root_url) if !current_user?(@user)
+  end
+
+  def correct_user_or_admin
+    @user = User.find(params[:id])
+    redirect_to(root_url) if !current_user?(@user) && current_user.type != "Admin"
+  end
+
+  def correct_address_customer
+    @user = Customer.find(params[:customer_id])
+    redirect_to(root_url) if !current_user?(@user)
   end
 
   def permitted_admin

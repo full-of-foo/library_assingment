@@ -7,12 +7,16 @@
       <div class="panel-heading"><h3>Come join us!</h3>
       </div>
       <div class="panel-body clearfix">
-        <%= render 'shared/error_messages' %>
+        <%= render 'shared/error_messages', object: @signup %>
 
-        <%= form_for(@user, url: sti_user_path(@user.type), method: :post) do |f| %>
+        <%= form_for(@signup, url: customers_path(@signup), method: :post) do |f| %>
 
             <div class="col-lg-7 col-lg-offset-2">
+
               <div id="small-push"></div>
+              <span class="text-info">Your details:</span>
+
+              <div id="half-push"></div>
               <%= f.label :first_name, "<span class=\"text-info\">First Name:</span>".html_safe %>
               <div>
                 <%= f.text_field :first_name, class: "form-control" %>
@@ -39,6 +43,46 @@
               <div>
                 <%= f.password_field :password_confirmation, class: "form-control" %>
               </div>
+
+              <div id="push"></div>
+              <span class="text-info">Your billing address:</span>
+
+              <div id="half-push"></div>
+              <%= f.label :line1, "<span class=\"text-info\">Street Line 1:</span>".html_safe %>
+              <div>
+                <%= f.text_field :line1, class: "form-control" %>
+              </div>
+
+              <div id="small-push"></div>
+              <%= f.label :line2, "<span class=\"text-info\">Street Line 2:</span>".html_safe %>
+              <div>
+                <%= f.text_field :line2, class: "form-control" %>
+              </div>
+
+              <div id="small-push"></div>
+              <%= f.label :city, "<span class=\"text-info\">City:</span>".html_safe %>
+              <div>
+                <%= f.text_field :city, class: "form-control" %>
+              </div>
+
+              <div id="small-push"></div>
+              <%= f.label :zip, "<span class=\"text-info\">Zip:</span>".html_safe %>
+              <div>
+                <%= f.text_field :zip, class: "form-control" %>
+              </div>
+
+              <div id="small-push"></div>
+              <%= f.label :state, "<span class=\"text-info\">State:</span>".html_safe %>
+              <div>
+                <%= f.text_field :state, class: "form-control" %>
+              </div>
+
+              <div id="small-push"></div>
+              <%= f.label :country, "<span class=\"text-info\">Country:</span>".html_safe %>
+              <div>
+                <%= f.text_field :country, class: "form-control" %>
+              </div>
+
 
               <div id="small-push"></div>
               <div class="col-lg-offset-4">

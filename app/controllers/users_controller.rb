@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :show]
+  before_action :signed_in_user
   before_action :permitted_admin, only: :index
 
   def index
     @users = User.paginate(page: params[:page])
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   def destroy

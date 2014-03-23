@@ -29,9 +29,9 @@ end
 
 Given(/^I am signed in as a (customer|admin)$/) do |cus_or_admin|
   if cus_or_admin == "admin"
-    @admin = FactoryGirl.create(:admin)
+    @admin ||= FactoryGirl.create(:admin)
   else
-    @customer = FactoryGirl.create(:customer)
+    @customer ||= FactoryGirl.create(:customer)
   end
 
   sign_in(@admin || @customer, no_capybara: true)

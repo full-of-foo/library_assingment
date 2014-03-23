@@ -5,11 +5,14 @@ LibraryAssignment::Application.routes.draw do
   match '/help',   to: 'static_pages#help',     via: 'get'
   match '/about',  to: 'static_pages#about',    via: 'get'
   # user
-  resources :users,       only: [:index, :show, :destroy]
+  resources :users,       only: [:index, :destroy]
   # admin
-  resources :admins,      only: [:new, :create, :edit, :update]
+  resources :admins,      only: [:new, :create, :edit, :update, :show]
   # customer
-  resources :customers,   only: [:new, :create, :edit, :update]
+  resources :customers,   only: [:new, :create, :edit, :update, :show] do
+    # address
+    resources :addresses, only: [:new, :create, :edit, :update, :destroy]
+  end
   #session
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'customers#new',        via: 'get'

@@ -15,7 +15,7 @@
           <ul class="users">
               <li>
                 <%= gravatar_for user, size: 52 %>
-                <%= link_to user.full_name, user %>
+                <%= link_to user.full_name, sti_user_path(user.type, user) %>
                 <% if user.type == "Customer" %>
                   | <%= link_to "delete", user, method: :delete,
                                                 data: { confirm: "You sure?" } %>

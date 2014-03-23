@@ -2,26 +2,9 @@
 Given(/^I visit the (customer|admin) (show|edit) page$/) do |customer_or_admin, show_or_edit|
   is_show = show_or_edit == "show"
   user    = customer_or_admin == "customer" ? @customer : @admin
-  url     = is_show ? user_path(user) : sti_user_path(user.type, user, "edit")
+  url     = is_show ? sti_user_path(user.type , user) : sti_user_path(user.type, user, "edit")
 
   visit url
-end
-
-Given(/^I submit an invalid signup$/) do
-  step("I fill in \"user_email\" with \"wrong@bar\"")
-
-  step('I press "Create my account"')
-end
-
-Given(/^I submit the customer signup$/) do
-  @customer = FactoryGirl.build(:customer)
-  step("I fill in \"user_email\" with \"#{@customer.email}\"")
-  step("I fill in \"user_first_name\" with \"#{@customer.first_name}\"")
-  step("I fill in \"user_surname\" with \"#{@customer.surname}\"")
-  step("I fill in \"user_password\" with \"#{@customer.password}\"")
-  step("I fill in \"user_password_confirmation\" with \"#{@customer.password}\"")
-
-  step('I press "Create my account"')
 end
 
 Given(/^I submit a new admin$/) do
@@ -54,11 +37,6 @@ end
 Given(/^I submit an invalid (customer|admin) update$/) do |customer_or_admin|
   step("I fill in \"user_email\" with \"bad\"")
   step('I press "Update Account"')
-end
-
-Given(/^the customers and admins are populated$/) do
-  15.times { FactoryGirl.create(:customer) }
-  15.times { FactoryGirl.create(:admin) }
 end
 
 Given(/^I delete the first customer$/) do

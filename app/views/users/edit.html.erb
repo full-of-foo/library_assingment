@@ -8,7 +8,7 @@
         <a id="change-grav" href="http://gravatar.com/emails"><span class="pull-right user-show-grav-container"><%= gravatar_for @user %></span></a>
       </div>
       <%= form_for(@user, url: sti_user_path(@user.type, @user), method: :patch) do |f| %>
-        <%= render 'shared/error_messages' %>
+        <%= render 'shared/error_messages', object: @user %>
 
         <div class="panel-body clearfix user-show-panel">
           <div class="col-lg-4 pull-right">

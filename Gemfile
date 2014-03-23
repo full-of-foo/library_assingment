@@ -18,6 +18,8 @@ gem "twitter-bootstrap-rails", :git => "https://github.com/seyhunak/twitter-boot
 gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap'
 
+gem 'virtus'
+
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 group :development, :test do
