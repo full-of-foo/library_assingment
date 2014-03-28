@@ -35,5 +35,21 @@ Scenario: Books index, sorting and searching as customer
   Then I search for the book title
   Then I see the searched book
 
+@book_cruds-3
+Scenario: Books show as admin
+  Given I am signed in as a admin
+  And a book is populated
+  Then I open the book
+  And I see the book show page
+
+@book_cruds-4
+Scenario: Books show as customer
+  Given I am signed in as a admin
+  And a book is populated
+  Then I visit "/books"
+  And I open the first book
+  And I see the book show page
+
+
 
 

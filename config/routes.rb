@@ -14,7 +14,7 @@ LibraryAssignment::Application.routes.draw do
     resources :addresses, only: [:new, :create, :edit, :update, :destroy]
   end
   # books
-  resources :books,       only: [:index]
+  resources :books,       only: [:index, :show]
 
   #session
   resources :sessions, only: [:new, :create, :destroy]

@@ -1,0 +1,29 @@
+<% provide(:title, @book.title) %>
+
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading user-show-panel-header">
+        <h3>Showing Book: <%= @book.title %></h3>
+      </div>
+      <div class="panel-body clearfix user-show-panel">
+      
+        <div id="small-push"></div>
+        <span class="text-info">Author:</span>
+        <p><%= @book.author.full_name %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Price:</span>
+        <p><%= number_to_currency(@book.price, unit: "€") %></p>
+
+        <div id="small-push"></div>
+        <span class="text-info">Topic:</span>
+        <p><%= @book.topic.title %></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

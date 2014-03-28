@@ -7,6 +7,10 @@ class BooksController < ApplicationController
       .paginate(page: params[:page], per_page: 10)
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
+
 
   private
 
