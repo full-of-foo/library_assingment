@@ -1,0 +1,26 @@
+<% provide(:title, 'Books') %>
+
+
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading">
+        <h3>Books</h3>
+      </div>
+      <div class="panel-body clearfix user-show-panel">
+
+      <%= form_tag books_path, :method => 'get', :id => "books-search" do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+        <div id="books"><%= render 'books' %></div>
+      <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

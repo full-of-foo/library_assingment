@@ -2,7 +2,7 @@
 # Tear down
 [User, Address].each(&:delete_all)
 
-## Users
+
 # test admin
 Admin.create!(first_name: "Example",
              surname: "User",
@@ -23,6 +23,7 @@ Admin.create!(first_name: "Example",
                password_confirmation: password)
 end
 
+
 # admins
 14.times do |n2|
   name      = Faker::Name.first_name
@@ -36,6 +37,7 @@ end
                password_confirmation: password)
 end
 
+
 # addresses
 28.times do |n3|
   faker_address = Faker::Address
@@ -47,5 +49,28 @@ end
                   state: faker_address.state,
                   country: faker_address.country,
                   customer: Customer.first(offset: (offset || n3)))
-
 end
+
+
+# topics
+%w(fiction horror politics romance eduction sci-fi thriller
+    biography religion comedy philosophy).each do |title|
+  Topic.create!(title: title)
+end
+
+# authors
+%w(Veronica\ Roth Nora\ Roberts James\ Patterson John\ Green Lee\ Child
+   Stephen\ King Brene\ Brown ).each do |full_name|
+  Author.create!(full_name: full_name)
+end
+
+# books
+41.times do
+  Book.create!(title: Faker::Lorem.words.join(' '),
+               price: ((((100.0 - 5.0) * rand() + 5) * 100).round / 100.0),
+               author: Author.order("RANDOM()").first,
+               topic: Topic.order("RANDOM()").first)
+end
+
+
+

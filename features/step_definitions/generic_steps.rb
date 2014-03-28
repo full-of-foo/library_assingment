@@ -13,6 +13,13 @@ Given(/^an address is populated$/) do
   @customer = @address.customer
 end
 
+Given(/^the books are populated$/) do
+  41.times { @book = FactoryGirl.create(:book) }
+
+  @author = @book.author
+  @topic  = @book.topic
+end
+
 Given(/^(.+) addresses are populated$/) do |count_str|
   count_str.to_i.times {
     @address  = @customer ? FactoryGirl.create(:address, customer: @customer) : FactoryGirl.create(:address)
