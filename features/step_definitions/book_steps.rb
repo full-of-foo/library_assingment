@@ -30,4 +30,5 @@ Then(/^I see the searched book$/) do
   step("I should see the text \"#{@book.title}\"")
   step("I should see the text \"#{@author.full_name}\"")
   step("I should see the text \"#{@topic.title}\"")
+  step("I should see the text \"#{@book.stock_count}\"")
 end

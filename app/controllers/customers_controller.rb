@@ -8,15 +8,6 @@ class CustomersController < ApplicationController
   end
 
   def create
-    # @user = Customer.new(user_params())
-    # if @user.save
-    #   sign_in @user
-    #   flash[:success] = "Welcome to the Crappy-Book-Store.com!"
-    #   redirect_to sti_user_path("Customer", @user)
-    # else
-    #   render "users/new"
-    # end
-
     @signup = Signup.new(signup_params())
     if @signup.save
       @user = @signup.customer

@@ -4,5 +4,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include UsersHelper
   include AddressesHelper
+  include BooksHelper
 
 end

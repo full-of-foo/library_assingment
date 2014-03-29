@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   belongs_to :author
   belongs_to :topic
+  has_many :book_stocks
 
   validates :author,
             :topic, presence: true
@@ -11,13 +12,21 @@ class Book < ActiveRecord::Base
 
   def validate
     errors.add(:price, "should be at least 0.01") if price.nil? || price < 0.01
-
     super
   end
 
+  def stock_count
+    BookStock.where(book: self).count
+  end
+
+  def self.all_with_stock_count
+    select('books.*, (SELECT COUNT(*) FROM "book_stocks" WHERE "book_stocks"."book_id" = "books"."id") AS book_stock_count')
+  end
+
   def self.search(search)
-    search ? joins(:author, :topic).where('lower(books.title) LIKE ? OR lower(authors.full_name) LIKE ?',
-                                  "%#{search.downcase}%", "%#{search.downcase}%") : self.joins(:author, :topic)
+    search ? all_with_stock_count.joins(:author, :topic)
+      .where('lower(books.title) LIKE ? OR lower(authors.full_name) LIKE ?',
+               "%#{search.downcase}%", "%#{search.downcase}%") : all_with_stock_count.joins(:author, :topic)
   end
 end
 

@@ -1,6 +1,6 @@
 
 # Tear down
-[User, Address].each(&:delete_all)
+[User, Address, Book, Author, Topic, BookStock].each(&:delete_all)
 
 
 # test admin
@@ -66,11 +66,16 @@ end
 
 # books
 41.times do
-  Book.create!(title: Faker::Lorem.words.join(' '),
-               price: ((((100.0 - 5.0) * rand() + 5) * 100).round / 100.0),
-               author: Author.order("RANDOM()").first,
-               topic: Topic.order("RANDOM()").first)
-end
+  book = Book.new(title: Faker::Lorem.words.join(' '),
+                 price: ((((100.0 - 5.0) * rand() + 5) * 100).round / 100.0),
+                 author: Author.order("RANDOM()").first,
+                 topic: Topic.order("RANDOM()").first)
+  book.save!
 
+  # randomly stock book
+  rand(0..5).times do
+    BookStock.create(book: book)
+  end
+end
 
 

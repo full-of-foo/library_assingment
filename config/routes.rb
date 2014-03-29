@@ -14,8 +14,9 @@ LibraryAssignment::Application.routes.draw do
     resources :addresses, only: [:new, :create, :edit, :update, :destroy]
   end
   # books
-  resources :books,       only: [:index, :show]
-
+  resources :books,        only: [:index, :show] do
+    match 'book_stocks', to: 'book_stocks#create_or_destroy_multiple', via: 'post'
+  end
   #session
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'customers#new',        via: 'get'

@@ -4,6 +4,7 @@
     <th id="book-price"><%= sortable "price" %></th>
     <th id="author-name"><%= sortable "authors.full_name", "Author" %></th>
     <th id="topic-title"><%= sortable "topics.title", "Topic" %></th>
+    <th id="stock-count"><%= sortable "book_stock_count", "Stock" %></th>
   </tr>
 
   <% @books.each do |book| %>
@@ -12,6 +13,7 @@
         <td class="price"><%= number_to_currency(book.price, unit: "€") %></td>
         <td><%= book.author.full_name %></td>
         <td><%= book.topic.title %></td>
+        <td><%= book.stock_count %></td>
       </tr>
   <% end %>
 
