@@ -21,10 +21,15 @@
               </span>
 
             <% end %>
-
           <% else %>
             <span><%= @book.stock_count %></span>
+            <% if @book.stock_count == 0 %>
+              <div class="alert alert-danger small">Cannot purchase book :(</div>
 
+            <% else %>
+              <%= link_to 'Add to cart', cart_add_path(@book), class: "btn btn-primary" %>
+
+            <% end %>
           <% end %>
         </div>
 

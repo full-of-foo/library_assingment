@@ -64,6 +64,7 @@ end
   Author.create!(full_name: full_name)
 end
 
+
 # books
 41.times do
   book = Book.new(title: Faker::Lorem.words.join(' '),
@@ -79,3 +80,13 @@ end
 end
 
 
+# book purchases
+Customer.all.each do |customer|
+  purchase = Purchase.new(customer: customer)
+  purchase.save!
+
+  # random book(s)
+  rand(1..5).times do
+    purchase.books << Book.order("RANDOM()").first
+  end
+end

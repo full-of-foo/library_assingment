@@ -15,6 +15,10 @@ Given(/^a book is populated$/) do
   @topic  = @book.topic
 end
 
+Given(/^(.+) stocks of the book are populated$/) do |count_str|
+  count_str.to_i.times { FactoryGirl.create(:book_stock, book: @book) }
+end
+
 Given(/^an address is populated$/) do
   @address  = FactoryGirl.create(:address)
   @customer = @address.customer
