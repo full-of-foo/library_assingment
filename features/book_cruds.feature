@@ -66,9 +66,10 @@ Scenario: Books show as customer
   And I should see the text "Stock Levels:"
   And I should not see the selector "select#stock_count"
   And I should see the text "0"
-
-
-
-
-
-
+  And I should see the text "Cannot purchase book :("
+  Then "2" stocks of the book are populated
+  Then I visit "/books"
+  And I open the first book
+  And I should see the text "2"
+  And I should see the selector "select#quantity"
+  And I should see the text "Purchase"

@@ -14,6 +14,7 @@
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
+    <%= stripe_javascript_tag %>
   </head>
   <body>
     <%= render 'layouts/header' %>

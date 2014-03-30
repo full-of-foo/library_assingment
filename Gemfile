@@ -19,6 +19,7 @@ gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap'
 
 gem 'virtus'
+gem 'stripe-rails'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
 

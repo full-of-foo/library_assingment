@@ -48,4 +48,27 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+  def shopping_cart
+    session[:cart] ||= []
+  end
+
+  def clear_cart!
+    session[:cart] = nil
+  end
+
+  def carted_book_quantity(book)
+    shopping_cart.select {|id| id == book.id.to_s}.size
+  end
+
+  def carted_book_total_price(book)
+    carted_book_quantity(book) * book.price
+  end
+
+  def carted_books_total_cost
+    Book.id_in(shopping_cart).to_a.each do |book|
+      quantity = carted_book_quantity(book)
+      book.price = book.price * quantity
+    end.map(&:price).sum
+  end
+
 end

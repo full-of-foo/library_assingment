@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328195641) do
+ActiveRecord::Schema.define(version: 20140329204938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20140328195641) do
     t.string "full_name"
   end
 
+  create_table "book_purchase_items", force: true do |t|
+    t.integer "purchase_id"
+    t.integer "book_id"
+  end
+
   create_table "book_stocks", force: true do |t|
     t.integer "book_id"
   end
@@ -49,6 +54,12 @@ ActiveRecord::Schema.define(version: 20140328195641) do
 
   add_index "books", ["author_id"], name: "index_books_on_author_id", using: :btree
   add_index "books", ["topic_id"], name: "index_books_on_topic_id", using: :btree
+
+  create_table "purchases", force: true do |t|
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "topics", force: true do |t|
     t.string "title"

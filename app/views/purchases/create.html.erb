@@ -1,0 +1,32 @@
+<% provide(:title, 'Payment Complete!') %>
+
+<div class="col-lg-5 col-lg-offset-2">
+  <div class="panel panel-default" id="navs">
+    <div class="panel-heading">Success!
+    </div>
+    <div class="panel-body clearfix">
+        <h2>Thanks, you paid <strong><%= number_to_currency(@purchase.total_cost, unit: "€") %></strong>!</h2>
+        <div>
+          <p class="text-info">Your books are the way, bro</p>
+          <p class="text-info">You'll be redirected soon!</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <img src="http://castletv.net/wp-content/forumuploads/shena/2012/12/stealth-ninja.png" class="img-responsive" alt="ninja">
+</div>
+
+<script>
+  $(function () {
+
+    redirect = function() {
+      window.location = '/books';
+    }
+
+    setTimeout(redirect, 2300);
+
+  })();
+</script>
+
