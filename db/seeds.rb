@@ -91,3 +91,14 @@ Customer.all.each do |customer|
     purchase.books << Book.order("RANDOM()").first
   end
 end
+
+
+# ratings
+Book.all.each do |book|
+  rand(1..5).times do
+    rating = Rating.new(amount:   (rand(0.5..5.0)).round_point5,
+                        customer: Customer.order("RANDOM()").first,
+                        book:     book)
+    rating.save!
+  end
+end

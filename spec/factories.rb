@@ -53,6 +53,12 @@ FactoryGirl.define do
     association :purchase, factory: :purchase
   end
 
+  factory :rating do
+    amount 1.5
+    association :book, factory: :book
+    association :customer, factory: :customer
+  end
+
   factory :signup do
     association :customer, factory: :customer, strategy: :build
     association :address, factory: :address, strategy: :build

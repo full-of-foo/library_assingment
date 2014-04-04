@@ -12,6 +12,10 @@ Given /^I press "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
+Given /^I press the element "([^\"]*)"$/ do |e|
+  find(e).click
+end
+
 Given /^I click "([^\"]*)"$/ do |link|
   click_link(link, match: :first)
 end

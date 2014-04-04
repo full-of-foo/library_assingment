@@ -47,6 +47,15 @@ Given(/^(.+) addresses are populated$/) do |count_str|
   }
 end
 
+Given(/^the customer book rating is populated$/) do
+  step("a book is populated") if !@book
+  step("a customer is populated") if !@customer
+
+  @rating = FactoryGirl.create(:rating,
+                               customer: @customer,
+                               book: @book)
+end
+
 # assertions
 Given(/^I should see an error message$/) do
   step("I should see the selector \"div.alert-danger\"")

@@ -1,7 +1,8 @@
 class Book < ActiveRecord::Base
   belongs_to :author
   belongs_to :topic
-  has_many :book_stocks
+  has_many :book_stocks, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   validates :author,
             :topic, presence: true
@@ -21,6 +22,14 @@ class Book < ActiveRecord::Base
 
   def has_stock_amount?(amount)
     stock_count >= amount
+  end
+
+  def average_rating
+    Rating.book_average(self)
+  end
+
+  def customer_rating(customer)
+    Rating.customer_book_rating(customer, self)
   end
 
   def self.all_with_stock_count

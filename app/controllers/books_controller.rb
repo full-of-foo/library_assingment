@@ -7,7 +7,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book   = Book.find(params[:id])
+    @rating = @book.customer_rating(current_user) if @book.customer_rating(current_user)
   end
 
 end

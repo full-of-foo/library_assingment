@@ -8,7 +8,28 @@
         <h3>Showing Book: <%= @book.title %></h3>
       </div>
       <div class="panel-body clearfix user-show-panel">
-      <div class="col-lg-4 pull-right">
+      <div class="col-lg-6 pull-right">
+
+          <div>
+            <span class="text-info">Average Rating: <%= @book.average_rating %> (<%= @book.ratings.size %> votes)</span>
+            <div id="star" style="margin-left: auto; margin-right: auto;"></div>
+            <div id="small-push"></div>
+
+            <% if current_user.type == "Customer" %>
+              <% form_url = @rating ? book_rating_path(@book, @rating) : book_ratings_path(@book) %>
+              <% form_method = @rating ? :put : :post %>
+
+              <%= form_tag(form_url, method: form_method, id: 'customer-rating') do %>
+                <span class="text-info">Your Rating:</span>
+                <div id="customer-star" style="margin-left: auto; margin-right: auto;"></div>
+                <%= text_field(:rating, :amount, style: "visibility:hidden;") %>
+
+                <div id="small-push"></div>
+              <% end %>
+            <% end %>
+
+          </div>
+
 
           <span class="text-info">Stock Levels:</span>
           <% if current_user.type == "Admin" %>
@@ -31,7 +52,8 @@
 
             <% end %>
           <% end %>
-        </div>
+
+      </div>
 
         <div id="small-push"></div>
         <span class="text-info">Author:</span>
@@ -49,5 +71,30 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @book.average_rating %>,
+    path: '/assets',
+    width: 150,
+    half: true
+  });
+
+
+  var customerScore = "<%=  @rating ? @rating.formated_amount.to_s : 0 %>";
+
+  $('#customer-star').raty({
+    score: customerScore,
+    path: '/assets',
+    width: 150,
+    half: true,
+    click: function(score, evt) {
+      $('#customer-rating #rating_amount').attr('value', score);
+      $('form#customer-rating').submit();
+    }
+  });
+
+</script>
 
 

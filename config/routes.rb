@@ -18,6 +18,7 @@ LibraryAssignment::Application.routes.draw do
   # books
   resources :books,        only: [:index, :show] do
     match 'book_stocks', to: 'book_stocks#create_or_destroy_multiple', via: 'post'
+    resources :ratings, only: [:update, :create]
   end
   # purchases
   resources :purchases, only: [:create, :new]
