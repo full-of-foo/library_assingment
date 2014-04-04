@@ -1,9 +1,16 @@
 class PurchasesController < ApplicationController
   before_action :signed_in_user
+  before_action :correct_user_or_admin, only: [:index]
+
+  def index
+    @purchases = Customer.find(params[:customer_id]).purchases
+      .paginate(page: params[:page], per_page: 5)
+  end
 
   def new
     if !shopping_cart.empty?
-      @purchase = Purchase.new
+      @purchase  = Purchase.new
+      @addresses = current_user.addresses
     else
       flash[:warning] = "Shopping cart is empty"
       redirect_to books_path
@@ -11,22 +18,22 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @purchase = Purchase.new(customer: current_user)
-    @purchase.save!
+    if carted_books_in_stock?
+      @purchase = Purchase.new(customer: current_user,
+                               address_id: params[:address][:id])
+      @purchase.save!
+      shopping_cart.each do |book_id|
+        book = Book.find(book_id)
+        @purchase.books << book
+        BookStock.decrement(book)
+      end
 
-    shopping_cart.each do |book_id|
-      @purchase.books << Book.find(book_id)
+      charge_customer(current_user, params[:stripeToken], @purchase)
+    else
+      flash[:warning] = "Oops! Purchase Cancelled! Books you carted are no longer stocked"
+      redirect_to books_path
     end
     clear_cart!
-
-    customer = Stripe::Customer
-      .create(email: current_user.email, card: params[:stripeToken])
-    charge = Stripe::Charge
-      .create(customer: customer.id, amount: (@purchase.total_cost * 100).to_i, currency: 'eur')
-    rescue Stripe::CardError => e
-      clear_cart!
-      flash[:warning] = e.message
-      redirect_to books_path
   end
 
 end

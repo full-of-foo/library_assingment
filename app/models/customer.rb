@@ -1,5 +1,6 @@
 class Customer < User
   has_many :addresses, dependent: :destroy
+  has_many :purchases
 
   # validate at least address
 

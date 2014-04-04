@@ -12,13 +12,15 @@ LibraryAssignment::Application.routes.draw do
   resources :customers,   only: [:new, :create, :edit, :update, :show] do
     # address
     resources :addresses, only: [:new, :create, :edit, :update, :destroy]
+    # purchase
+    resources :purchases, only: [:index]
   end
   # books
   resources :books,        only: [:index, :show] do
     match 'book_stocks', to: 'book_stocks#create_or_destroy_multiple', via: 'post'
   end
   # purchases
-  resources :purchases
+  resources :purchases, only: [:create, :new]
   # shopping cart
   match '/cart/show',            to: 'shopping_cart#show',   via: 'get'
   match '/cart/clear',           to: 'shopping_cart#clear',  via: 'get'

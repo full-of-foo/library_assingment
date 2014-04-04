@@ -17,8 +17,8 @@
       <div class="panel-body clearfix user-show-panel">
 
         <span class="text-info">Total Cost: </span><span><%= number_to_currency(carted_books_total_cost, unit: "€") %></span>
-        <div id="books">
-          <table class="books-table">
+        <div id="cart-table-container">
+          <table class="app-table">
           <tr>
             <th id="book-title"><%= sortable "title" %></th>
             <th id="book-price"><%= sortable "price" %></th>

@@ -15,8 +15,17 @@ Given(/^a book is populated$/) do
   @topic  = @book.topic
 end
 
+Given(/^a purchase of the book is populated$/) do
+  step("1 stocks of the book are populated") if !@book_stock
+  @address  = @customer ? FactoryGirl.create(:address, customer: @customer) : FactoryGirl.create(:address)
+  @customer = @address.customer
+
+  @purchase = FactoryGirl.create(:purchase, customer: @customer, address: @address)
+end
+
 Given(/^(.+) stocks of the book are populated$/) do |count_str|
-  count_str.to_i.times { FactoryGirl.create(:book_stock, book: @book) }
+  step("a book is populated") if !@book
+  count_str.to_i.times { @book_stock = FactoryGirl.create(:book_stock, book: @book) }
 end
 
 Given(/^an address is populated$/) do

@@ -7,10 +7,14 @@ class ShoppingCartController < ApplicationController
   end
 
   def add
-    shopping_cart << params[:book_id]
-
-    flash[:success] = "Added to cart"
-    redirect_to cart_show_path
+    if is_book_cartable?(Book.find(params[:book_id]))
+      shopping_cart << params[:book_id]
+      flash[:success] = "Added to cart"
+      redirect_to cart_show_path
+    else
+      flash[:warning] = "Not enough stock to cart"
+      redirect_to book_path(params[:book_id])
+    end
   end
 
   def remove

@@ -45,7 +45,7 @@ Scenario: Books show and update stock level as admin
   And a book is populated
   Then I open the book
   And I see the book show page
-  And I should see the text "Stock Levels:"
+  And I should see the text "Stock Levels: 0"
   And I should see the selector "select#stock_count"
   Then I press "Update"
   And I should see the text "Stock amount unchanged"
@@ -55,21 +55,21 @@ Scenario: Books show and update stock level as admin
   Then I select "0" from "stock_count"
   Then I press "Update"
   And I should see the text "Stock amount decreased"
+  And I should not see the text "Add to cart"
+
 
 @book_cruds-4
 Scenario: Books show as customer
   Given I am signed in as a customer
   And a book is populated
   Then I visit "/books"
-  And I open the first book
+  And I open the book
   And I see the book show page
-  And I should see the text "Stock Levels:"
+  And I should see the text "Stock Levels: 0"
   And I should not see the selector "select#stock_count"
-  And I should see the text "0"
   And I should see the text "Cannot purchase book :("
-  Then "2" stocks of the book are populated
+  Then 2 stocks of the book are populated
   Then I visit "/books"
-  And I open the first book
-  And I should see the text "2"
-  And I should see the selector "select#quantity"
-  And I should see the text "Purchase"
+  And I open the book
+  And I should see the text "Stock Levels: 2"
+  And I should see the text "Add to cart"

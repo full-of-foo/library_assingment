@@ -43,7 +43,7 @@ module UsersHelper
   end
 
   def correct_user_or_admin
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || params[:customer_id])
     redirect_to(root_url) if !current_user?(@user) && current_user.type != "Admin"
   end
 

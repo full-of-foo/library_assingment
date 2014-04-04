@@ -1,9 +1,12 @@
 class Purchase < ActiveRecord::Base
-  belongs_to :customer
+  belongs_to :customer, class_name: "Customer"
+  belongs_to :address
+
   has_many :book_purchase_items
   has_many :books, through: :book_purchase_items
 
-  validates :customer, presence: true
+  validates :customer,
+            :address, presence: true
 
   def total_cost
     book_ids = book_purchase_items.map(&:book_id)

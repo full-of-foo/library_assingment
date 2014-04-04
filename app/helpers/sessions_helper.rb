@@ -66,9 +66,22 @@ module SessionsHelper
 
   def carted_books_total_cost
     Book.id_in(shopping_cart).to_a.each do |book|
-      quantity = carted_book_quantity(book)
+      quantity   = carted_book_quantity(book)
       book.price = book.price * quantity
     end.map(&:price).sum
+  end
+
+  def is_book_cartable?(book)
+    carted_book_quantity(book) < book.stock_count
+  end
+
+  def carted_books_in_stock?
+    shopping_cart.any? do |id|
+      book            = Book.find(id)
+      carted_quantity = carted_book_quantity(book)
+
+      carted_quantity <= book.stock_count
+    end
   end
 
 end

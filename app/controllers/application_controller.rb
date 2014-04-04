@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include AddressesHelper
   include BooksHelper
+  include PurchasesHelper
 
   helper_method :sort_column, :sort_direction
 

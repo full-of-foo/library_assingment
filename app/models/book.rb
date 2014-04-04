@@ -19,6 +19,10 @@ class Book < ActiveRecord::Base
     BookStock.where(book: self).count
   end
 
+  def has_stock_amount?(amount)
+    stock_count >= amount
+  end
+
   def self.all_with_stock_count
     select('books.*, (SELECT COUNT(*) FROM "book_stocks" WHERE "book_stocks"."book_id" = "books"."id") AS book_stock_count')
   end

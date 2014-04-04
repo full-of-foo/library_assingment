@@ -1,6 +1,6 @@
 
 # Tear down
-[User, Address, Book, Author, Topic, BookStock].each(&:delete_all)
+[User, Address, Book, Author, Topic, BookStock, Purchase].each(&:delete_all)
 
 
 # test admin
@@ -82,7 +82,8 @@ end
 
 # book purchases
 Customer.all.each do |customer|
-  purchase = Purchase.new(customer: customer)
+  purchase         = Purchase.new(customer: customer,
+                                  address: customer.addresses.order("RANDOM()").first)
   purchase.save!
 
   # random book(s)

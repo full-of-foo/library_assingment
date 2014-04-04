@@ -58,3 +58,4 @@ Capybara.app_host = "http://localhost:3000"
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 include UsersHelper
+include BooksHelper
