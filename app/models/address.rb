@@ -1,5 +1,6 @@
 class Address < ActiveRecord::Base
   belongs_to :customer
+  has_many :purchases, dependent: :destroy
 
   validates :line1,
             :city,
