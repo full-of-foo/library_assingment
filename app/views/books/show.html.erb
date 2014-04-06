@@ -6,6 +6,7 @@
     <div class="panel panel-default" id="navs">
       <div class="panel-heading user-show-panel-header">
         <h3>Showing Book: <%= @book.title %></h3>
+        <span class="pull-right user-show-grav-container"><%= image_tag @book.image_url.to_s %></span>
       </div>
       <div class="panel-body clearfix user-show-panel">
       <div class="col-lg-6 pull-right">

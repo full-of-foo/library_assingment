@@ -66,11 +66,14 @@ end
 
 
 # books
+file_names = Dir.glob(File.join(Rails.root, 'seed_images/*'))
 41.times do
   book = Book.new(title: Faker::Lorem.words.join(' '),
                  price: ((((100.0 - 5.0) * rand() + 5) * 100).round / 100.0),
                  author: Author.order("RANDOM()").first,
                  topic: Topic.order("RANDOM()").first)
+
+  book.image.store!(File.open(file_names[rand(0..file_names.size-1)]))
   book.save!
 
   # randomly stock book

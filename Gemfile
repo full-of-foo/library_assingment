@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
 gem 'pg'
@@ -11,17 +10,19 @@ gem 'turbolinks'
 gem "font-awesome-rails"
 gem 'jbuilder', '~> 1.2'
 
+
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails", :git => "https://github.com/seyhunak/twitter-bootstrap-rails.git", :branch => "bootstrap3"
 
 gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap'
-
 gem 'virtus'
 gem 'stripe-rails'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem "carrierwave"
+
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
