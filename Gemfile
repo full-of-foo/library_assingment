@@ -28,6 +28,7 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'faker'
   gem 'launchy'
+  gem "railroady"
 end
 
 group :test do

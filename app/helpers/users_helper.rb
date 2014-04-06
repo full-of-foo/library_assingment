@@ -37,6 +37,10 @@ module UsersHelper
     end
   end
 
+  def sessionless_user
+    redirect_back_or(books_path) if signed_in?
+  end
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) if !current_user?(@user)
