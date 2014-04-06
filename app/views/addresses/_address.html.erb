@@ -16,11 +16,11 @@
 
   <span><%= address.country %></span>
 
-   <% if current_user?(@customer) %>
+   <% if customer_has_ownership?(current_user, address) %>
     <span class="pull-right">
-        <%= link_to "Update", edit_customer_address_path(@customer, address), class: "btn btn-success" %>
-        <% if @customer.addresses.count > 1 %>
-          <%= link_to "Remove", customer_address_path(@customer, address), method: :delete, data: { confirm: "Will also delete purchase histories of this address! You sure?" }, class: "btn btn-danger" %>
+        <%= link_to "Update", edit_customer_address_path(current_user, address), class: "btn btn-success" %>
+        <% if current_user.addresses.count > 1 %>
+          <%= link_to "Remove", customer_address_path(current_user, address), method: :delete, data: { confirm: "Will also delete purchase histories of this address! You sure?" }, class: "btn btn-danger" %>
         <% end %>
     </span>
   <% end %>

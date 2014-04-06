@@ -9,7 +9,7 @@
       </div>
       <div class="panel-body clearfix user-show-panel">
         <div class="col-lg-4 pull-right">
-           <% if current_user?(@review.customer) %>
+           <% if customer_has_ownership?(current_user, @review) %>
             <%= link_to "Update", edit_book_review_path(@review.book, @review), class: "btn btn-primary" %>
             <%= link_to "Delete", customer_review_path(current_user, @review), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
 

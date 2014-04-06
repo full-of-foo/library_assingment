@@ -35,14 +35,10 @@ class Book < ActiveRecord::Base
     Rating.customer_book_rating(customer, self)
   end
 
-  def self.all_with_stock_count
-    select('books.*, (SELECT COUNT(*) FROM "book_stocks" WHERE "book_stocks"."book_id" = "books"."id") AS book_stock_count')
-  end
-
   def self.search(search)
-    search ? all_with_stock_count.joins(:author, :topic)
+    search ? BooksWithStockCountQuery.new.select.joins(:author, :topic)
       .where('lower(books.title) LIKE ? OR lower(authors.full_name) LIKE ?',
-               "%#{search.downcase}%", "%#{search.downcase}%") : all_with_stock_count.joins(:author, :topic)
+               "%#{search.downcase}%", "%#{search.downcase}%") : BooksWithStockCountQuery.new.select.joins(:author, :topic)
   end
 end
 

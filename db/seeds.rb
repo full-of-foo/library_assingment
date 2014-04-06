@@ -1,6 +1,7 @@
 
 # Tear down
-[User, Address, Book, Author, Topic, BookStock, Purchase].each(&:delete_all)
+[User, Address, Book, Author, Topic, BookStock, Purchase, Review, Rating]
+  .each(&:delete_all)
 
 
 # test admin

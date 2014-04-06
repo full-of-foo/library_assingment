@@ -29,7 +29,12 @@
         <p><%= @customer.email %></p>
 
         <div id="small-push"></div>
-        <span class="text-info">Billing Addresses: (<%= @customer.addresses.count %>) <% if current_user?(@customer) %><%= link_to "Add", new_customer_address_path(@customer), id: "add-address", class: "btn btn-success" %><% end %>
+        <span class="text-info">Billing Addresses: (<%= @customer.addresses.count %>)
+
+        <% if current_user?(@customer) %>
+          <%= link_to "Add", new_customer_address_path(@customer), id: "add-address", class: "btn btn-success" %>
+        <% end %>
+
         </span>
             <% if @customer.addresses.any? %>
               <ol class="addresses">
