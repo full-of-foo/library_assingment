@@ -46,7 +46,7 @@ include ApplicationHelper
 def sign_in(user, options={})
   if options[:no_capybara]
     visit "/"
-    remember_token = ApplicationController.helpers.new_remember_token()
+    remember_token = ApplicationController.helpers.base64_remember_token()
     page.driver.browser.set_cookie("remember_token=#{remember_token}")
     user.update_attribute(:remember_token, ApplicationController
                             .helpers.hash_token(remember_token))

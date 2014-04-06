@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = ApplicationController.helpers
-        .hash_token(ApplicationController.helpers.new_remember_token())
+        .hash_token(ApplicationController.helpers.base64_remember_token())
     end
 end

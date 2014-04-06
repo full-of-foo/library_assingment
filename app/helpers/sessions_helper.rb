@@ -1,18 +1,11 @@
 module SessionsHelper
 
-  def new_remember_token
+  def base64_remember_token
     SecureRandom.urlsafe_base64
   end
 
   def hash_token(token)
     Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  def sign_in(user)
-    remember_token = new_remember_token()
-    cookies.permanent[:remember_token] = remember_token
-    user.update_attribute(:remember_token, hash_token(remember_token))
-    self.current_user = user
   end
 
   def current_user=(user)
@@ -30,13 +23,6 @@ module SessionsHelper
 
   def signed_in?
     !current_user.nil?
-  end
-
-  def sign_out
-    current_user.update_attribute(:remember_token,
-                                    hash_token(new_remember_token()))
-    cookies.delete(:remember_token)
-    self.current_user = nil
   end
 
   def redirect_back_or(default)

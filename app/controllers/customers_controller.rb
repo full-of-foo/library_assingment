@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     @signup = Signup.new(signup_params())
     if @signup.save
       @user = @signup.customer
-      sign_in @user
+      Session.new(@user, cookies).sign_in
 
       flash[:success] = "Welcome to the Crappy-Book-Store.com!"
       redirect_to sti_user_path("Customer", @user)
