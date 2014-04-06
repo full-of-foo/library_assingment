@@ -23,6 +23,9 @@ Then(/^I see the book show page$/) do
   step("I should see the text \"Showing Book: #{@book.title}\"")
   step("I should see the text \"#{@author.full_name}\"")
   step("I should see the text \"#{@topic.title}\"")
+  step("I should see the text \"Reviews:\"")
+  step("I should see the text \"Customer\"")
+  step("I should see the text \"Made on\"")
 end
 
 Then(/^I see the searched book$/) do

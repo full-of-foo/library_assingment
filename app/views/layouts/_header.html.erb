@@ -21,6 +21,7 @@
         <% else %>
             <li><%= link_to "Shopping Cart (#{shopping_cart.size})", cart_show_path %></li>
             <li><%= link_to "Purchase History", customer_purchases_path(current_user) %></li>
+            <li><%= link_to "My Reviews", customer_reviews_path(current_user) %></li>
         <% end %>
 
       <% else %>

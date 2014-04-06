@@ -28,6 +28,21 @@ Given(/^(.+) stocks of the book are populated$/) do |count_str|
   count_str.to_i.times { @book_stock = FactoryGirl.create(:book_stock, book: @book) }
 end
 
+Given(/^(.+) reivews for the book are populated$/) do |count_str|
+  step("a book is populated") if !@book
+
+  @review = FactoryGirl.create(:review,
+                               book: @book)
+end
+
+Given(/^(.+) reivews from the customer are populated$/) do |count_str|
+  step("a book is populated") if !@book
+
+  @review = FactoryGirl.create(:review,
+                               customer: @customer,
+                               book: @book)
+end
+
 Given(/^an address is populated$/) do
   @address  = FactoryGirl.create(:address)
   @customer = @address.customer

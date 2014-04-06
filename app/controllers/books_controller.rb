@@ -7,8 +7,10 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book   = Book.find(params[:id])
-    @rating = @book.customer_rating(current_user) if @book.customer_rating(current_user)
+    @book    = Book.find(params[:id])
+    @rating  = @book.customer_rating(current_user) if @book.customer_rating(current_user)
+    @reviews = @book.reviews.paginate(page: params[:page], per_page: 10)
+    @review  = Review.customer_book_review(current_user, @book)
   end
 
 end

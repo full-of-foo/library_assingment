@@ -8,18 +8,23 @@ LibraryAssignment::Application.routes.draw do
   resources :users,       only: [:index, :destroy]
   # admin
   resources :admins,      only: [:new, :create, :edit, :update, :show]
+
   # customer
   resources :customers,   only: [:new, :create, :edit, :update, :show] do
-    # address
     resources :addresses, only: [:new, :create, :edit, :update, :destroy]
-    # purchase
     resources :purchases, only: [:index]
+    resources :reviews, only: [:index, :destroy]
   end
+
   # books
   resources :books,        only: [:index, :show] do
     match 'book_stocks', to: 'book_stocks#create_or_destroy_multiple', via: 'post'
     resources :ratings, only: [:update, :create]
+    resources :reviews, only: [:edit, :new, :update, :create]
   end
+
+  # reviews
+  resources :reviews, only: [:show]
   # purchases
   resources :purchases, only: [:create, :new]
   # shopping cart

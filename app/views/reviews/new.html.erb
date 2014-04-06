@@ -1,0 +1,39 @@
+<% provide(:title, 'Make Review') %>
+
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+      <div class="panel-heading">
+        <h3>Review for: <%= @book.title %></h3>
+      </div>
+      <div class="panel-body clearfix">
+        <%= render 'shared/error_messages', object: @review %>
+
+        <%= form_for([@book, @review], url: book_reviews_path) do |f| %>
+
+            <div class="col-lg-7 col-lg-offset-2">
+
+              <div id="small-push"></div>
+
+
+              <div id="small-push"></div>
+              <%= f.label :message, "<span class=\"text-info\">Message:</span>".html_safe %>
+              <div>
+                <%= f.text_area :message, class: "form-control" %>
+              </div>
+
+
+              <div id="small-push"></div>
+              <div class="col-lg-offset-4">
+                <div id="small-push"></div>
+                <%= f.submit "Create review", class: "btn btn-large btn-primary" %>
+              </div>
+            <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

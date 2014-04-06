@@ -93,7 +93,7 @@ Customer.all.each do |customer|
 end
 
 
-# ratings
+# ratings and reviews
 Book.all.each do |book|
   rand(1..5).times do
     rating = Rating.new(amount:   (rand(0.5..5.0)).round_point5,
@@ -101,4 +101,12 @@ Book.all.each do |book|
                         book:     book)
     rating.save!
   end
+
+  rand(1..5).times do
+    review = Review.new(message:   Faker::Lorem.words.join(' '),
+                        customer: Customer.order("RANDOM()").first,
+                        book:     book)
+    review.save!
+  end
 end
+

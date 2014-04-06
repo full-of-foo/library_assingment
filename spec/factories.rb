@@ -59,6 +59,12 @@ FactoryGirl.define do
     association :customer, factory: :customer
   end
 
+  factory :review do
+    sequence(:message)     { |n| "Some review #{n}" }
+    association :book,     factory: :book
+    association :customer, factory: :customer
+  end
+
   factory :signup do
     association :customer, factory: :customer, strategy: :build
     association :address, factory: :address, strategy: :build
