@@ -18,22 +18,16 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    if carted_books_in_stock?
-      @purchase = Purchase.new(customer: current_user,
-                               address_id: params[:address][:id])
-      @purchase.save!
-      shopping_cart.each do |book_id|
-        book = Book.find(book_id)
-        @purchase.books << book
-        BookStock.decrement(book)
-      end
+    purchaseCharger = PurchaseCharger.new(current_user, shopping_cart, params)
 
-      charge_customer(current_user, params[:stripeToken], @purchase)
+    if carted_books_in_stock? && purchaseCharger.save
+      clear_cart!
+      @purchase = purchaseCharger.purchase
     else
+      clear_cart!
       flash[:warning] = "Oops! Purchase Cancelled! Books you carted are no longer stocked"
       redirect_to books_path
     end
-    clear_cart!
   end
 
 end

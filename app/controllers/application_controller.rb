@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include AddressesHelper
   include BooksHelper
-  include PurchasesHelper
 
   def sort_column
     cols = Array.new(Book.column_names) + ["authors.full_name", "topics.title", "book_stock_count"]
