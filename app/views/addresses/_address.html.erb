@@ -1,29 +1,14 @@
-<li class="content">
-  <span><%= address.line1 %>,</span>
+<% present address, AddressPresenter do |address_presenter| %>
 
-  <% if not address.line2.blank? %>
-    <span><%= address.line2 %>,</span>
-  <% end %>
+  <li class="content">
+    <%= address_presenter.item_attribute_spans %>
 
-  <span><%= address.city %>,</span>
+     <% if customer_has_ownership?(current_user, address) %>
+      <span class="pull-right">
+            <%= address_presenter.update_link %>
+            <%= address_presenter.remove_link if current_user.addresses.count > 1 %>
+      </span>
+    <% end %>
+  </li>
 
-  <% if not address.zip.blank? %>
-    <span><%= address.zip %>,</span>
-
-  <% end %>
-
-  <span><%= address.state %>,</span>
-
-  <span><%= address.country %></span>
-
-   <% if customer_has_ownership?(current_user, address) %>
-    <span class="pull-right">
-        <%= link_to "Update", edit_customer_address_path(current_user, address), class: "btn btn-success" %>
-        <% if current_user.addresses.count > 1 %>
-          <%= link_to "Remove", customer_address_path(current_user, address), method: :delete, data: { confirm: "Will also delete purchase histories of this address! You sure?" }, class: "btn btn-danger" %>
-        <% end %>
-    </span>
-  <% end %>
-
-
-</li>
+<% end %>

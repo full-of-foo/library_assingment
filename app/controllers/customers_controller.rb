@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @addresses = @customer.addresses.paginate(page: params[:page])
+    @addresses = @customer.addresses.paginate(page: params[:page], per_page: 10)
   end
 
   def edit

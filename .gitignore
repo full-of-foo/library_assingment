@@ -12,3 +12,4 @@
 # other
 /.secret
 /.DS_Store
+/public/uploads

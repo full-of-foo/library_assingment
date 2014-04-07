@@ -1,53 +1,50 @@
 <% provide(:title, @customer.full_name) %>
 
+<% present @customer, UserPresenter do |user_presenter| %>
 
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
-        <h3>Showing Profile: <%= @customer.full_name %></h3>
-        <span class="pull-right user-show-grav-container"><%= gravatar_for @customer %></span>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
-        <div class="col-lg-4 pull-right">
-          <% if current_user?(@customer) %>
-            <%= link_to "Update", sti_user_path(@customer.type, @customer, "edit"), class: "btn btn-success" %>
-            <%= link_to "Delete Account", @customer, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
-          <% end %>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
+
+        <div class="panel-heading user-show-panel-header">
+          <%= user_presenter.show_title("Showing Profile:", @customer.full_name) %>
+          <span class="pull-right user-show-grav-container">
+            <%= user_presenter.gravatar %>
+          </span>
         </div>
 
-        <div id="small-push"></div>
-        <span class="text-info">First Name:</span>
-        <p><%= @customer.first_name %></p>
-
-        <div id="small-push"></div>
-        <span class="text-info">Surname:</span>
-        <p><%= @customer.surname %></p>
-
-        <div id="small-push"></div>
-        <span class="text-info">Email:</span>
-        <p><%= @customer.email %></p>
-
-        <div id="small-push"></div>
-        <span class="text-info">Billing Addresses: (<%= @customer.addresses.count %>)
-
-        <% if current_user?(@customer) %>
-          <%= link_to "Add", new_customer_address_path(@customer), id: "add-address", class: "btn btn-success" %>
-        <% end %>
-
-        </span>
-            <% if @customer.addresses.any? %>
-              <ol class="addresses">
-                <%= render @addresses %>
-              </ol>
-
-              <%= will_paginate @addresses %>
-            <% end %>
+        <div class="panel-body clearfix user-show-panel">
+          <div class="col-lg-4 pull-right">
+            <%= user_presenter.edit_link   if current_user?(@user) %>
+            <%= user_presenter.delete_link if current_user?(@user) %>
+          </div>
 
 
+          <% ["first_name", "surname", "email"].each do |attr_str| %>
+
+            <div id="small-push"></div>
+            <%= user_presenter.attribute_label(attr_str) %>
+            <%= user_presenter.attribute_content(attr_str) %>
+
+          <% end %>
+
+          <div id="small-push"></div>
+          <%= user_presenter.show_addresses_title(current_user?(@customer)) %>
+
+          <% if @customer.addresses.any? %>
+            <ol class="addresses">
+              <%= render @addresses %>
+            </ol>
+
+            <%= will_paginate @addresses, renderer: BootstrapPagination::Rails %>
+          <% end %>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
+
 
 

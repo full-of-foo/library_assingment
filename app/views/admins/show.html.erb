@@ -1,36 +1,38 @@
 <% provide(:title, @user.full_name) %>
 
+<% present @user, UserPresenter do |user_presenter| %>
 
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
-        <h3>Showing Profile: <%= @user.full_name %></h3>
-        <span class="pull-right user-show-grav-container"><%= gravatar_for @user %></span>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
-        <div class="col-lg-4 pull-right">
-          <% if current_user?(@user) %>
-            <%= link_to "Update", sti_user_path(@user.type, @user, "edit"), class: "btn btn-success" %>
-            <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
-          <% end %>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
+
+        <div class="panel-heading user-show-panel-header">
+          <%= user_presenter.show_title("Showing Profile:", @user.full_name) %>
+          <span class="pull-right user-show-grav-container">
+            <%= user_presenter.gravatar %>
+          </span>
         </div>
 
-        <div id="small-push"></div>
-        <span class="text-info">First Name:</span>
-        <p><%= @user.first_name %></p>
+        <div class="panel-body clearfix user-show-panel">
+          <div class="col-lg-4 pull-right">
+            <%= user_presenter.edit_link   if current_user?(@user) %>
+            <%= user_presenter.delete_link if current_user?(@user) %>
+          </div>
 
-        <div id="small-push"></div>
-        <span class="text-info">Surname:</span>
-        <p><%= @user.surname %></p>
 
-        <div id="small-push"></div>
-        <span class="text-info">Email:</span>
-        <p><%= @user.email %></p>
+          <% ["first_name", "surname", "email"].each do |attr_str| %>
 
+            <div id="small-push"></div>
+            <%= user_presenter.attribute_label(attr_str) %>
+            <%= user_presenter.attribute_content(attr_str) %>
+
+          <% end %>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
 
 

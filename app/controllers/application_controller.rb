@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   include AddressesHelper
   include BooksHelper
 
+  def present(object, klass = nil)
+    klass ||= "#{object.class}Presenter".constantize
+    klass.new(object, view_context)
+  end
+
   def sort_column
     cols = Array.new(Book.column_names) + ["authors.full_name", "topics.title", "book_stock_count"]
 

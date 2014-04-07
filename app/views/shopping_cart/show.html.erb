@@ -1,56 +1,58 @@
 <% provide(:title, 'Cart') %>
 
+<% present shopping_cart, CartPresenter do |cart_presenter| %>
 
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
 
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading">
-        <h3>Shopping Cart (<%= shopping_cart.size %>)</h3>
-        <span class="pull-right user-show-grav-container">
-          <%= link_to "Clear all", cart_clear_path, class: "btn btn-danger" %>
-          <% if !@books.empty? %>
-            <%= link_to "Checkout", new_purchase_path, class: "btn btn-success" %>
-          <% end %>
-        </span>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
+        <div class="panel-heading">
+          <%= cart_presenter.show_title("Shopping Cart","(#{shopping_cart.size})") %>
 
-        <span class="text-info">Total Cost: </span><span><%= number_to_currency(carted_books_total_cost, unit: "€") %></span>
-        <div id="cart-table-container">
-          <table class="app-table">
-          <tr>
-            <th id="book-title"><%= sortable "title" %></th>
-            <th id="book-price"><%= sortable "price" %></th>
-            <th id="author-name"><%= sortable "authors.full_name", "Author" %></th>
-            <th id="topic-title"><%= sortable "topics.title", "Topic" %></th>
-            <th id="cart-quantity">Quantity</th>
-            <th id="cart-price">Total Price</th>
-            <th></th>
-          </tr>
+          <span class="pull-right user-show-grav-container">
+            <%= cart_presenter.clear_all_link %>
+            <%= cart_presenter.checkout_link  if !@books.empty? %>
 
-          <% @books.each do |book| %>
-              <tr>
-                <td><%= link_to book.title, book_path(book) %></td>
-                <td class="price"><%= number_to_currency(book.price, unit: "€") %></td>
-                <td><%= book.author.full_name %></td>
-                <td><%= book.topic.title %></td>
-                <td><%= carted_book_quantity(book) %></td>
-                <td><%= number_to_currency(carted_book_total_price(book), unit: "€") %></td>
-                <td><%= link_to "Remove", cart_remove_path(book), class: "btn btn-danger" %></td>
-              </tr>
-          <% end %>
-
-        </table>
-
-        <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
-
-
+          </span>
         </div>
 
+        <div class="panel-body clearfix user-show-panel">
+          <%= cart_presenter.total_cost_title_div %>
+
+          <div id="cart-table-container">
+
+            <table class="app-table">
+            <tr>
+              <%= cart_presenter.table_header("book-title",    sortable("title")) %>
+              <%= cart_presenter.table_header("book-price",    sortable("price")) %>
+              <%= cart_presenter.table_header("author-name",   sortable("authors.full_name", "Author")) %>
+              <%= cart_presenter.table_header("author-name",   sortable("topics.title", "Topic")) %>
+              <%= cart_presenter.table_header("cart-quantity", "Quantity") %>
+              <%= cart_presenter.table_header("cart-price",    "Total Price") %>
+              <%= cart_presenter.table_header("",              "") %>
+            </tr>
+
+            <% @books.each do |book| %>
+                <tr>
+                  <td><%= link_to book.title, book_path(book) %></td>
+                  <td class="price"><%= number_to_currency(book.price, unit: "€") %></td>
+                  <td><%= book.author.full_name %></td>
+                  <td><%= book.topic.title %></td>
+                  <td><%= carted_book_quantity(book) %></td>
+                  <td><%= number_to_currency(carted_book_total_price(book), unit: "€") %></td>
+                  <td><%= cart_presenter.remove_link(book) %></td>
+                </tr>
+            <% end %>
+
+          </table>
+          <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
 
 

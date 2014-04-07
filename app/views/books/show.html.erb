@@ -1,143 +1,87 @@
 <% provide(:title, @book.title) %>
 
+<% present @book, BookPresenter do |book_presenter| %>
 
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
-        <h3>Showing Book: <%= @book.title %></h3>
-        <span class="pull-right user-show-grav-container"><%= image_tag @book.image_url.to_s %></span>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
-      <div class="col-lg-6 pull-right">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
 
-          <div>
-            <span class="text-info">Average Rating: <%= @book.average_rating %> (<%= @book.ratings.size %> votes)</span>
-            <div id="star" style="margin-left: auto; margin-right: auto;"></div>
+        <div class="panel-heading user-show-panel-header">
+          <%= book_presenter.show_title("Showing Book:", @book.title) %>
+          <%= book_presenter.image_container %>
+
+        </div>
+
+        <div class="panel-body clearfix user-show-panel">
+        <div class="col-lg-6 pull-right">
+
+          <%= book_presenter.average_ratings_label %>
+          <%= book_presenter.average_ratings_div %>
+          <div id="small-push"></div>
+
+          <% if current_user.type == "Customer" %>
+            <%= book_presenter.customer_rating_label %>
+            <%= book_presenter.customer_rating_div   %>
+            <%= book_presenter.rating_form(@rating)  %>
             <div id="small-push"></div>
-
-            <% if current_user.type == "Customer" %>
-              <% form_url = @rating ? book_rating_path(@book, @rating) : book_ratings_path(@book) %>
-              <% form_method = @rating ? :put : :post %>
-
-              <%= form_tag(form_url, method: form_method, id: 'customer-rating') do %>
-                <span class="text-info">Your Rating:</span>
-                <div id="customer-star" style="margin-left: auto; margin-right: auto;"></div>
-                <%= text_field(:rating, :amount, style: "visibility:hidden;") %>
-
-                <div id="small-push"></div>
-              <% end %>
-            <% end %>
-
-          </div>
-
-
-          <span class="text-info">Stock Levels:</span>
-          <% if current_user.type == "Admin" %>
-
-            <%= form_tag(book_book_stocks_path(@book), method: :post) do %>
-
-              <span>
-                <%= select_tag :stock_count, options_for_select((0..100), @book.stock_count) %>
-                <%= submit_tag "Update", class: "btn btn-primary" %>
-              </span>
-
-            <% end %>
-          <% else %>
-            <span><%= @book.stock_count %></span>
-            <% if @book.stock_count == 0 %>
-              <div class="alert alert-danger small">Cannot purchase book :(</div>
-
-            <% else %>
-              <%= link_to 'Add to cart', cart_add_path(@book), class: "btn btn-primary" %>
-
-            <% end %>
           <% end %>
 
+          <%= book_presenter.detail_label("Stock Levels:") %>
+          <%= book_presenter.stock_form         if current_user.type == "Admin"    %>
+          <%= book_presenter.stock_counter_span if current_user.type == "Customer" %>
+
+        </div>
+
+          <div id="small-push"></div>
+          <%= book_presenter.attribute_label("author")             %>
+          <%= book_presenter.attribute_content("author.full_name") %>
+
+          <div id="small-push"></div>
+          <%= book_presenter.attribute_label("price")    %>
+          <%= book_presenter.price_attribute_content     %>
+
+          <div id="small-push"></div>
+          <%= book_presenter.attribute_label("topic")           %>
+          <%= book_presenter.attribute_content("topic.title")   %>
+
+        </div>
       </div>
+    </div>
 
-        <div id="small-push"></div>
-        <span class="text-info">Author:</span>
-        <p><%= @book.author.full_name %></p>
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
 
-        <div id="small-push"></div>
-        <span class="text-info">Price:</span>
-        <p><%= number_to_currency(@book.price, unit: "€") %></p>
+        <div class="panel-heading user-show-panel-header">
+          <%= book_presenter.show_title("Reviews:", "") %>
+          <%= book_presenter.review_submissions_span(@review) if current_user.type == "Customer" %>
+        </div>
 
-        <div id="small-push"></div>
-        <span class="text-info">Topic:</span>
-        <p><%= @book.topic.title %></p>
+        <div class="panel-body clearfix user-show-panel">
+          <table class="app-table">
+            <tr>
+              <%= book_presenter.table_header("", "Customer") %>
+              <%= book_presenter.table_header("", "Made on") %>
+              <%= book_presenter.table_header("", "Message") %>
+            </tr>
 
+            <% @reviews.each do |review| %>
+                <tr>
+                  <td><%= review.customer.full_name %></td>
+                  <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
+                  <td><%= book_presenter.review_link(review) %></td>
+                </tr>
+            <% end %>
+
+          </table>
+          <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
-        <h3>Reviews:</h3>
-        <span class="pull-right user-show-grav-container">
-        <% if current_user.type == "Customer" %>
+  <%= book_presenter.ratings_star_script(@rating) %>
 
-          <% if @review %>
-            <%= link_to 'Update Review', edit_book_review_path(@book, @review), class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to 'Make Review', new_book_review_path(@book), class: "btn btn-primary" %>
-          <% end %>
-
-        <% end %>
-
-        </span>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
-
-        <table class="app-table">
-          <tr>
-            <th>Customer</th>
-            <th>Made on</th>
-            <th>Message</th>
-          </tr>
-
-          <% @reviews.each do |review| %>
-              <tr>
-                <td><%= review.customer.full_name %></td>
-                <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
-                <td><%= link_to truncate(review.message), review_path(review) %></td>
-              </tr>
-          <% end %>
-
-        </table>
-        <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<script>
-  $('#star').raty({
-    readOnly: true,
-    score: <%= @book.average_rating %>,
-    path: '/assets',
-    width: 150,
-    half: true
-  });
-
-
-  var customerScore = "<%=  @rating ? @rating.formated_amount.to_s : 0 %>";
-
-  $('#customer-star').raty({
-    score: customerScore,
-    path: '/assets',
-    width: 150,
-    half: true,
-    click: function(score, evt) {
-      $('#customer-rating #rating_amount').attr('value', score);
-      $('form#customer-rating').submit();
-    }
-  });
-
-</script>
+<% end %>
 
 

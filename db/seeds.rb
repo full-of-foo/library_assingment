@@ -52,7 +52,6 @@ end
                   customer: Customer.first(offset: (offset || n3)))
 end
 
-
 # topics
 %w(fiction horror politics romance eduction sci-fi thriller
     biography religion comedy philosophy).each do |title|

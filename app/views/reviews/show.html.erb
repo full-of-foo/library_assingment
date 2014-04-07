@@ -1,39 +1,46 @@
 <% provide(:title, "Book Review") %>
 
+<% present @review do |review_presenter| %>
 
-<div class="row">
-  <div class="col-lg-8 col-lg-offset-2">
-    <div class="panel panel-default" id="navs">
-      <div class="panel-heading user-show-panel-header">
-        <h3>Book Review: <%= @review.book.title %></h3>
-      </div>
-      <div class="panel-body clearfix user-show-panel">
-        <div class="col-lg-4 pull-right">
-           <% if customer_has_ownership?(current_user, @review) %>
-            <%= link_to "Update", edit_book_review_path(@review.book, @review), class: "btn btn-primary" %>
-            <%= link_to "Delete", customer_review_path(current_user, @review), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <div class="panel panel-default" id="navs">
 
-          <% else %>
-            <div id="small-push"></div>
-            <span class="text-info">Submitted by:</span>
-            <p><%= @review.customer.full_name %></p>
-
-          <% end %>
-
-          <div id="small-push"></div>
-          <span class="text-info">Made on:</span>
-          <p><%= @review.created_at.strftime("%d/%m/%Y")%></p>
-
+        <div class="panel-heading user-show-panel-header">
+          <%= review_presenter.show_title("Book Review:", @review.book.title) %>
         </div>
 
+        <div class="panel-body clearfix user-show-panel">
+          <div class="col-lg-4 pull-right">
 
-        <div id="small-push"></div>
-        <span class="text-info">Message:</span>
-        <p><%= @review.message %></p>
+            <% if customer_has_ownership?(current_user, @review) %>
+              <%= review_presenter.edit_link    %>
+              <%= review_presenter.delete_link  %>
 
+            <% else %>
+              <div id="small-push"></div>
+              <%= review_presenter.detail_label("Submitted by:")               %>
+              <%= review_presenter.detail_content(@review.customer.full_name)  %>
+
+            <% end %>
+
+            <div id="small-push"></div>
+            <%= review_presenter.detail_label("Made on:")                  %>
+            <%= review_presenter.detail_content(@review.created_at, true)  %>
+
+          </div>
+
+
+          <div id="small-push"></div>
+          <%= review_presenter.attribute_label("message")   %>
+          <%= review_presenter.attribute_content("message") %>
+
+
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+<% end %>
 
 
