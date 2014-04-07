@@ -8,7 +8,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = current_user.addresses.build(address_params())
+    @address = current_user.addresses.build(permitted_params.address)
 
     if @address.save
       flash[:success] = "Address created"
@@ -25,7 +25,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find_by(id: params[:id], customer_id: params[:customer_id])
 
-    if @address.update_attributes(address_params())
+    if @address.update_attributes(permitted_params.address)
       flash[:success] = "Address updated"
       redirect_to sti_user_path("Customer", @customer)
     else
@@ -35,12 +35,12 @@ class AddressesController < ApplicationController
 
   def destroy
     @address = Address.find(params[:id])
-
     @address.destroy
 
     flash[:success] = "Address deleted"
     redirect_to sti_user_path("Customer", @customer)
   end
+
 
   private
 

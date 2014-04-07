@@ -8,7 +8,7 @@ class AdminsController < ApplicationController
   end
 
   def create
-    @user = Admin.new(user_params())
+    @user = Admin.new(permitted_params.user)
     if @user.save
       flash[:success] = "Profile created"
       redirect_to sti_user_path("Admin", @user)
@@ -28,7 +28,7 @@ class AdminsController < ApplicationController
 
   def update
     @user = Admin.find(params[:id])
-    if @user.update_attributes(user_params())
+    if @user.update_attributes(permitted_params.user)
       flash[:success] = "Profile updated"
       redirect_to sti_user_path("Admin", @user)
     else

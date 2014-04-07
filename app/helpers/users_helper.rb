@@ -13,20 +13,9 @@ module UsersHelper
   end
 
   def gravatar_for(user, size = 50 )
-    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar", size: size)
-  end
-
-  def user_params
-      params.require(:user).permit(:first_name, :email, :password, :surname,
-                                    :password_confirmation)
-  end
-
-  def signup_params
-    params.require(:signup).permit(:first_name, :email, :password, :surname,
-                                    :password_confirmation, :line1, :line2, :city, :state, :zip,
-                                  :country, :customer_id)
   end
 
   def signed_in_user

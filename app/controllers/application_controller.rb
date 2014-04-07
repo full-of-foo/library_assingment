@@ -1,12 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :sort_column, :sort_direction, :customer_has_ownership?
-
+  helper_method :sort_column,
+                :sort_direction,
+                :customer_has_ownership?,
+                :permitted_params
   include ApplicationHelper
   include SessionsHelper
   include UsersHelper
-  include AddressesHelper
   include BooksHelper
+
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params, current_user)
+  end
 
   def present(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize
