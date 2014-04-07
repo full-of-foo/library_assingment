@@ -15,7 +15,6 @@
 
         <%= form_tag purchases_path do %>
           <div id="small-push"></div>
-
           <%= label_tag :address, "<span class=\"text-info\">Billing Address:</span>".html_safe %>
           <div><%= collection_select(:address, :id, @addresses, :id, :to_formatted_s) %></div>
 
@@ -27,5 +26,3 @@
     </div>
   </div>
 </div>
-
-

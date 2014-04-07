@@ -1,64 +1,25 @@
 <% provide(:title, 'Edit address') %>
 
-
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
-      <div class="panel-heading"><h3>Update billing address</h3>
+
+      <div class="panel-heading">
+        <h3>Update billing address</h3>
       </div>
+
       <div class="panel-body clearfix">
         <%= render 'shared/error_messages', object: @address %>
 
-        <%= form_for([@customer, @address], url: customer_address_path(@customer, @address), method: :patch) do |f| %>
+        <div class="col-lg-7 col-lg-offset-2">
+          <%= labeled_form_for([@customer, @address], url: customer_address_path(@customer, @address), method: :patch) do |f| %>
+            <%= render 'addresses/fields', f: f %>
 
-            <div class="col-lg-7 col-lg-offset-2">
-              <div id="small-push"></div>
-              <%= f.label :line1, "<span class=\"text-info\">Street Line 1:</span>".html_safe %>
-              <div>
-                <%= f.text_field :line1, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :line2, "<span class=\"text-info\">Street Line 2:</span>".html_safe %>
-              <div>
-                <%= f.text_field :line2, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :city, "<span class=\"text-info\">City:</span>".html_safe %>
-              <div>
-                <%= f.text_field :city, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :zip, "<span class=\"text-info\">Zip:</span>".html_safe %>
-              <div>
-                <%= f.text_field :zip, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :state, "<span class=\"text-info\">State:</span>".html_safe %>
-              <div>
-                <%= f.text_field :state, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :country, "<span class=\"text-info\">Country:</span>".html_safe %>
-              <div>
-                <%= f.text_field :country, class: "form-control" %>
-              </div>
-
-
-              <div id="small-push"></div>
-              <div class="col-lg-offset-4">
-                <div id="small-push"></div>
-                <%= f.submit "Update billing address", class: "btn btn-large btn-primary" %>
-              </div>
-            <% end %>
-
+            <%= f.submit "Update billing address", class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
-
-

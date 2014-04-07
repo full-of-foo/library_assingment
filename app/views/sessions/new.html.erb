@@ -9,32 +9,20 @@
       </div>
 
       <div class="panel-body clearfix">
-        <%= form_for(:session, url: sessions_path) do |f| %>
+        <div class="col-lg-7 col-lg-offset-2">
+          <%= labeled_form_for(:session, url: sessions_path) do |f| %>
 
-         <div class="col-lg-7 col-lg-offset-2">
-            <div id="small-push"></div>
-            <%= f.label :email, "<span class=\"text-info\">Email:</span>".html_safe %>
-            <div>
-              <%= f.text_field :email, class: "form-control" %>
-            </div>
-
-            <div id="small-push"></div>
-            <%= f.label :password, "<span class=\"text-info\">Password:</span>".html_safe %>
-            <div>
-              <%= f.password_field :password, class: "form-control" %>
-            </div>
-
+            <%= f.text_field :email,        label: { name: "Email:" }    %>
+            <%= f.password_field :password, label: { name: "Password:" } %>
             <div class="col-lg-6 col-lg-offset-3">
               <div id="small-push"></div>
               <img src="/assets/b35.png" class="img-responsive" alt="meme">
 
-              <div id="push"></div>
-              <div class="col-lg-offset-4">
-                <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-              </div>
+              <div id="half-push"></div>
+              <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     </div>

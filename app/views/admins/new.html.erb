@@ -1,6 +1,5 @@
 <% provide(:title, 'Enroll Admin') %>
 
-
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
@@ -9,47 +8,14 @@
       <div class="panel-body clearfix">
         <%= render 'shared/error_messages', object: @user %>
 
-        <%= form_for(@user, url: sti_user_path(@user.type), method: :post) do |f| %>
-
-            <div class="col-lg-7 col-lg-offset-2">
-              <div id="small-push"></div>
-              <%= f.label :first_name, "<span class=\"text-info\">First Name:</span>".html_safe %>
-              <div>
-                <%= f.text_field :first_name, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :surname, "<span class=\"text-info\">Surname:</span>".html_safe %>
-              <%= f.text_field :surname, class: "form-control" %>
-
-              <div id="small-push"></div>
-              <%= f.label :email, "<span class=\"text-info\">Email:</span>".html_safe %>
-              <div>
-                <%= f.text_field :email, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :password, "<span class=\"text-info\">Password:</span>".html_safe %>
-              <div>
-                <%= f.password_field :password, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <%= f.label :password_confirmation, "<span class=\"text-info\">Confirmation:</span>".html_safe %>
-              <div>
-                <%= f.password_field :password_confirmation, class: "form-control" %>
-              </div>
-
-              <div id="small-push"></div>
-              <div class="col-lg-offset-4">
-                <div id="small-push"></div>
-                <%= f.submit "Create Admin", class: "btn btn-large btn-primary" %>
-              </div>
-            <% end %>
+        <div class="col-lg-7 col-lg-offset-2">
+          <%= labeled_form_for(@user, url: sti_user_path(@user.type), method: :post) do |f| %>
+            <%= render 'users/fields', f: f %>
+            <%= f.submit "Create Admin", class: "btn btn-large btn-primary" %>
+          <% end %>
+        </div>
 
       </div>
     </div>
   </div>
 </div>
-
-

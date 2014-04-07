@@ -5,8 +5,8 @@
 
      <% if customer_has_ownership?(current_user, address) %>
       <span class="pull-right">
-            <%= address_presenter.update_link %>
-            <%= address_presenter.remove_link if current_user.addresses.count > 1 %>
+        <%= address_presenter.update_link %>
+        <%= address_presenter.remove_link if current_user.addresses.count > 1 %>
       </span>
     <% end %>
   </li>
