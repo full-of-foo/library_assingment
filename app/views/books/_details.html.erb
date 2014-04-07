@@ -1,0 +1,48 @@
+<% present @book, BookPresenter do |book_presenter| %>
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+
+      <div class="panel-heading user-show-panel-header">
+        <%= book_presenter.show_title("Showing Book:", @book.title) %>
+        <%= book_presenter.image_container %>
+
+      </div>
+
+      <div class="panel-body clearfix user-show-panel">
+      <div class="col-lg-6 pull-right">
+
+        <%= book_presenter.average_ratings_label %>
+        <%= book_presenter.average_ratings_div %>
+        <div id="small-push"></div>
+
+        <% if current_user.type == "Customer" %>
+          <%= book_presenter.customer_rating_label %>
+          <%= book_presenter.customer_rating_div   %>
+          <%= book_presenter.rating_form(@rating)  %>
+          <div id="small-push"></div>
+        <% end %>
+
+        <%= book_presenter.detail_label("Stock Levels:") %>
+        <%= book_presenter.stock_form         if current_user.type == "Admin"    %>
+        <%= book_presenter.stock_counter_span if current_user.type == "Customer" %>
+
+      </div>
+
+        <div id="small-push"></div>
+        <%= book_presenter.attribute_label("author")             %>
+        <%= book_presenter.attribute_content("author.full_name") %>
+
+        <div id="small-push"></div>
+        <%= book_presenter.attribute_label("price")    %>
+        <%= book_presenter.price_attribute_content     %>
+
+        <div id="small-push"></div>
+        <%= book_presenter.attribute_label("topic")           %>
+        <%= book_presenter.attribute_content("topic.title")   %>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>

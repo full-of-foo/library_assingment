@@ -19,13 +19,10 @@
             <%= user_presenter.delete_link if current_user?(@user) %>
           </div>
 
-
           <% ["first_name", "surname", "email"].each do |attr_str| %>
-
             <div id="small-push"></div>
             <%= user_presenter.attribute_label(attr_str) %>
             <%= user_presenter.attribute_content(attr_str) %>
-
           <% end %>
 
           <div id="small-push"></div>
@@ -38,13 +35,10 @@
 
             <%= will_paginate @addresses, renderer: BootstrapPagination::Rails %>
           <% end %>
-
         </div>
+
       </div>
     </div>
   </div>
 
 <% end %>
-
-
-

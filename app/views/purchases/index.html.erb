@@ -1,41 +1,30 @@
 <% provide(:title, 'Purchases') %>
 
-
-
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
+
       <div class="panel-heading">
         <h3>Purchases</h3>
       </div>
+
       <div class="panel-body clearfix user-show-panel">
+        <div id="purchases-table-container">
 
-      <div id="purchases-table-container">
+          <table class="app-table">
+            <tr>
+              <th>Total price</th>
+              <th>Billed address</th>
+              <th>Book(s)</th>
+              <th>Date</th>
+            </tr>
+            <%= render @purchases %>
 
-        <table class="app-table">
-          <tr>
-            <th>Total price</th>
-            <th>Billed address</th>
-            <th>Book(s)</th>
-            <th>Date</th>
-          </tr>
+          </table>
+          <%= will_paginate @purchases, renderer: BootstrapPagination::Rails %>
+        </div>
 
-          <% @purchases.each do |purchase| %>
-              <tr>
-                <td class="price"><%= number_to_currency(purchase.total_cost, unit: "€") %></td>
-                <td><%= purchase.address.to_formatted_s %></td>
-                <td><%= format_books_as_string(purchase.books) %></td>
-                <td><%= purchase.created_at.strftime("%M:%H %d/%m/%Y") %></td>
-              </tr>
-          <% end %>
-
-        </table>
-        <%= will_paginate @purchases, renderer: BootstrapPagination::Rails %>
-
-      </div>
       </div>
     </div>
   </div>
 </div>
-
-

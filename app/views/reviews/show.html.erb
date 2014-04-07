@@ -12,35 +12,27 @@
 
         <div class="panel-body clearfix user-show-panel">
           <div class="col-lg-4 pull-right">
-
             <% if customer_has_ownership?(current_user, @review) %>
               <%= review_presenter.edit_link    %>
               <%= review_presenter.delete_link  %>
-
             <% else %>
               <div id="small-push"></div>
               <%= review_presenter.detail_label("Submitted by:")               %>
               <%= review_presenter.detail_content(@review.customer.full_name)  %>
-
             <% end %>
 
             <div id="small-push"></div>
             <%= review_presenter.detail_label("Made on:")                  %>
             <%= review_presenter.detail_content(@review.created_at, true)  %>
-
           </div>
-
 
           <div id="small-push"></div>
           <%= review_presenter.attribute_label("message")   %>
           <%= review_presenter.attribute_content("message") %>
-
-
         </div>
+
       </div>
     </div>
   </div>
 
 <% end %>
-
-

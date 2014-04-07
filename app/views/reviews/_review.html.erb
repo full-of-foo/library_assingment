@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to review.book.title, book_path(review.book) %></td>
+  <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
+  <td><%= link_to truncate(review.message), review_path(review) %></td>
+  <td><%= link_to "Delete", customer_review_path(current_user, review), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+  </td>
+</tr>

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to book.title, book_path(book) %></td>
+  <td class="price"><%= number_to_currency(book.price, unit: "€") %></td>
+  <td><%= book.author.full_name %></td>
+  <td><%= book.topic.title %></td>
+  <td><%= carted_book_quantity(book) %></td>
+  <td><%= number_to_currency(carted_book_total_price(book), unit: "€") %></td>
+  <td><%= cart_presenter.remove_link(book) %></td>
+</tr>

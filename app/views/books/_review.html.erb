@@ -1,0 +1,5 @@
+<tr>
+  <td><%= review.customer.full_name %></td>
+  <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
+  <td><%= book_presenter.review_link(review) %></td>
+</tr>

@@ -21,11 +21,9 @@
 
 
           <% ["first_name", "surname", "email"].each do |attr_str| %>
-
             <div id="small-push"></div>
             <%= user_presenter.attribute_label(attr_str) %>
             <%= user_presenter.attribute_content(attr_str) %>
-
           <% end %>
 
         </div>
@@ -34,5 +32,3 @@
   </div>
 
 <% end %>
-
-

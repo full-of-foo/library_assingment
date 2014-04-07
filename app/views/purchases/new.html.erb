@@ -1,35 +1,29 @@
 <% provide(:title, 'Checkout') %>
 
-
-
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
+
       <div class="panel-heading">
         <h3>Checkout books</h3>
         </span>
       </div>
-      <div class="panel-body clearfix" style="margin-left:0;margin-right: 0;text-align: center;">
 
-        <span class="text-info">Total Cost: </span><span><%= number_to_currency(carted_books_total_cost, unit: "€") %></span>
+      <div class="panel-body clearfix" style="margin-left:0;margin-right: 0;text-align: center;">
+        <span class="text-info">Total Cost: </span>
+        <span><%= number_to_currency(carted_books_total_cost, unit: "€") %></span>
+
         <%= form_tag purchases_path do %>
           <div id="small-push"></div>
-              <%= label_tag :address, "<span class=\"text-info\">Billing Address:</span>".html_safe %>
-          <div>
-            <%= collection_select(:address, :id, @addresses, :id, :to_formatted_s) %>
-          </div>
+
+          <%= label_tag :address, "<span class=\"text-info\">Billing Address:</span>".html_safe %>
+          <div><%= collection_select(:address, :id, @addresses, :id, :to_formatted_s) %></div>
 
           <div id="push"></div>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-email="<%= current_user.email %>"
-                  data-description="Complete your purchase <%= current_user.full_name %>"
-                  data-amount="<%= (carted_books_total_cost * 100) %>"
-                  data-allow-remember-me="false"></script>
-
+          <%= render "stripe_button" %>
         <% end %>
-
       </div>
+
     </div>
   </div>
 </div>

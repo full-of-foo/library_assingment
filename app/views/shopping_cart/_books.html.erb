@@ -1,0 +1,17 @@
+<table class="app-table">
+  <tr>
+    <%= cart_presenter.table_header("book-title",    sortable("title")) %>
+    <%= cart_presenter.table_header("book-price",    sortable("price")) %>
+    <%= cart_presenter.table_header("author-name",   sortable("authors.full_name", "Author")) %>
+    <%= cart_presenter.table_header("author-name",   sortable("topics.title", "Topic")) %>
+    <%= cart_presenter.table_header("cart-quantity", "Quantity") %>
+    <%= cart_presenter.table_header("cart-price",    "Total Price") %>
+    <%= cart_presenter.table_header("",              "") %>
+  </tr>
+
+  <% books.each do |book| %>
+    <%= render partial: 'shopping_cart/book', locals: { book: book, cart_presenter: cart_presenter } %>
+  <% end %>
+</table>
+
+<%= will_paginate books, renderer: BootstrapPagination::Rails %>

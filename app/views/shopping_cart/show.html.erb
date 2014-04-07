@@ -20,39 +20,12 @@
           <%= cart_presenter.total_cost_title_div %>
 
           <div id="cart-table-container">
-
-            <table class="app-table">
-            <tr>
-              <%= cart_presenter.table_header("book-title",    sortable("title")) %>
-              <%= cart_presenter.table_header("book-price",    sortable("price")) %>
-              <%= cart_presenter.table_header("author-name",   sortable("authors.full_name", "Author")) %>
-              <%= cart_presenter.table_header("author-name",   sortable("topics.title", "Topic")) %>
-              <%= cart_presenter.table_header("cart-quantity", "Quantity") %>
-              <%= cart_presenter.table_header("cart-price",    "Total Price") %>
-              <%= cart_presenter.table_header("",              "") %>
-            </tr>
-
-            <% @books.each do |book| %>
-                <tr>
-                  <td><%= link_to book.title, book_path(book) %></td>
-                  <td class="price"><%= number_to_currency(book.price, unit: "€") %></td>
-                  <td><%= book.author.full_name %></td>
-                  <td><%= book.topic.title %></td>
-                  <td><%= carted_book_quantity(book) %></td>
-                  <td><%= number_to_currency(carted_book_total_price(book), unit: "€") %></td>
-                  <td><%= cart_presenter.remove_link(book) %></td>
-                </tr>
-            <% end %>
-
-          </table>
-          <%= will_paginate @books, renderer: BootstrapPagination::Rails %>
-
+            <%= render partial: 'shopping_cart/books', locals: { books: @books, cart_presenter: cart_presenter } %>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
 <% end %>
-
-

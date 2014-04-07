@@ -1,0 +1,30 @@
+<% present @book, BookPresenter do |book_presenter| %>
+
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default" id="navs">
+
+      <div class="panel-heading user-show-panel-header">
+        <%= book_presenter.show_title("Reviews:", "") %>
+        <%= book_presenter.review_submissions_span(@review) if current_user.type == "Customer" %>
+      </div>
+
+      <div class="panel-body clearfix user-show-panel">
+        <table class="app-table">
+          <tr>
+            <%= book_presenter.table_header("", "Customer") %>
+            <%= book_presenter.table_header("", "Made on") %>
+            <%= book_presenter.table_header("", "Message") %>
+          </tr>
+
+          <% @reviews.each do |review| %>
+              <%= render partial: 'books/review', locals: { review: review, book_presenter: book_presenter } %>
+          <% end %>
+        </table>
+        <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+      </div>
+
+    </div>
+  </div>
+  <%= book_presenter.ratings_star_script(@rating) %>
+
+<% end %>

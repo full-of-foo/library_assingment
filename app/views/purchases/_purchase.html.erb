@@ -1,0 +1,6 @@
+<tr>
+  <td class="price"><%= number_to_currency(purchase.total_cost, unit: "€") %></td>
+  <td><%= purchase.address.to_formatted_s %></td>
+  <td><%= format_books_as_string(purchase.books) %></td>
+  <td><%= purchase.created_at.strftime("%M:%H %d/%m/%Y") %></td>
+</tr>

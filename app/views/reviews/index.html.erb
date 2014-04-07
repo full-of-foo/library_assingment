@@ -1,43 +1,30 @@
 <% provide(:title, 'My Reviews') %>
 
-
-
 <div class="row">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="panel panel-default" id="navs">
+
       <div class="panel-heading">
         <h3>My Reviews</h3>
       </div>
+
       <div class="panel-body clearfix user-show-panel">
 
-      <div id="purchases-table-container">
+        <div id="purchases-table-container">
+           <table class="app-table">
+            <tr>
+              <th>Book</th>
+              <th>Made on</th>
+              <th>Message</th>
+              <th></th>
+            </tr>
+           <%= render @reviews %>
 
-         <table class="app-table">
-          <tr>
-            <th>Book</th>
-            <th>Made on</th>
-            <th>Message</th>
-            <th></th>
-          </tr>
+          </table>
+          <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+        </div>
 
-          <% @reviews.each do |review| %>
-              <tr>
-                <td><%= link_to review.book.title, book_path(review.book) %></td>
-                <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
-                <td><%= link_to truncate(review.message), review_path(review) %></td>
-                <td><%= link_to "Delete", customer_review_path(current_user, review), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
-                </td>
-              </tr>
-          <% end %>
-
-        </table>
-        <%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
-
-
-      </div>
       </div>
     </div>
   </div>
 </div>
-
-
