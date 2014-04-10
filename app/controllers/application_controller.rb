@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
           redirect_to signin_url
         end
       end
+      redirect_to(books_path) if current_user && current_permission.route.sessionless?
     end
 
 end
