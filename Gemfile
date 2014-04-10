@@ -23,11 +23,11 @@ gem 'stripe-rails'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem "carrierwave"
 gem 'fog'
+gem 'faker'
 
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
-  gem 'faker'
   gem 'launchy'
   gem "railroady"
 end
