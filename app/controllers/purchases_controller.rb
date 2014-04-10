@@ -1,6 +1,4 @@
 class PurchasesController < ApplicationController
-  before_action :signed_in_user
-  before_action :correct_user_or_admin, only: [:index]
 
   def index
     @purchases = Customer.find(params[:customer_id]).purchases

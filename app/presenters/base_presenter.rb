@@ -49,14 +49,6 @@ class BasePresenter
       number_to_currency(amount, unit: "€")
     end
 
-    def handle_none(value)
-      if value.present?
-        yield
-      else
-        content_tag :span, "None given", class: "none"
-      end
-    end
-
     def method_missing(*args, &block)
       @template.send(*args, &block)
     end

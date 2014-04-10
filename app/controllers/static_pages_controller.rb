@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :sessionless_user
 
   def home
   end
@@ -9,4 +8,5 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
 end

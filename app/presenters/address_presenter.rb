@@ -24,5 +24,4 @@ class AddressPresenter < BasePresenter
       method: :delete, data: { confirm: confirm_text }, class: "btn btn-danger"
   end
 
-
 end

@@ -166,7 +166,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
-                6) Single and Nested View Partial Structuring Pattern
+                6) Single and Nested View Partial Structuring Patterns
               </a>
             </h4>
           </div>
@@ -190,6 +190,27 @@
             <div class="panel-body">
 
               <p></p>
+            </div>
+          </div>
+       </div>
+
+       <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">
+                8) Value Object Pattern
+              </a>
+            </h4>
+          </div>
+          <div id="collapse11" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              <p> simple objects whose equality is dependent on their value rather than an identity.
+              They are usually immutable. Date, URI, and Pathname are examples from Ruby’s standard library,
+              but your application can (and almost certainly should) define domain-specific Value Objects as well.
+              Extracting them from ActiveRecords is low hanging refactoring fruit. In Rails, Value Objects are great
+              when you have an attribute or small group of attributes that have logic associated with them.
+              Anything more than basic text fields and counters are candidates for Value Object extraction.</p>
             </div>
           </div>
        </div>

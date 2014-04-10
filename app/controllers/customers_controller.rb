@@ -1,7 +1,4 @@
 class CustomersController < ApplicationController
-  before_action :signed_in_user,        only: [:edit, :update, :show]
-  before_action :correct_user,          only: [:edit, :update]
-  before_action :correct_user_or_admin, only: [:show]
 
   def new
     @signup = Signup.new

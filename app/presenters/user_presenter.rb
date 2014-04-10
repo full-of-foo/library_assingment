@@ -35,4 +35,8 @@ class UserPresenter < BasePresenter
     link_to text, new_customer_address_path(user), id: "add-address", class: "btn btn-success"
   end
 
+  def purchase_history_link
+    link_to "Purchase History", customer_purchases_path(user), class: "btn btn-success" if current_user.type == "Admin"
+  end
+
 end

@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :signed_in_user
 
   def index
     @reviews = current_user.reviews

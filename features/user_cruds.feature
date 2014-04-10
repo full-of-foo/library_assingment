@@ -30,13 +30,7 @@ Scenario: Users index as admin
   Then I visit "/users"
   And I see the users page
 
-@allow-rescue
 @user_cruds-5
-Scenario: Users index as customer
-  Given I am signed in as a customer
-  Then I visit "/users" and get a 404
-
-@user_cruds-6
 Scenario: Admin create admin
   Given I am signed in as a admin
   Then I visit "/users"
@@ -46,7 +40,7 @@ Scenario: Admin create admin
   And I submit a new admin
   And I should see the text "Profile created"
 
-@user_cruds-7
+@user_cruds-6
 Scenario: Admin delete customer
   Given I am signed in as a admin
   And the customers and admins are populated
@@ -54,7 +48,7 @@ Scenario: Admin delete customer
   And I delete the first customer
   And I should see the text "Account deleted"
 
-@user_cruds-8
+@user_cruds-7
 Scenario: Admin delete self
   Given I am signed in as a admin
   Then I visit the admin show page

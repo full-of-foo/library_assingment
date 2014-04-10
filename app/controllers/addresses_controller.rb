@@ -1,7 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :signed_in_user
-  before_action :correct_address_customer
-  before_action :find_customer
+  before_action :find_customer, only: [:edit, :create, :update, :destroy]
 
   def new
     @address = current_user.addresses.build

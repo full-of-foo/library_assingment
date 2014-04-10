@@ -1,6 +1,4 @@
 class BookStocksController < ApplicationController
-  before_action :signed_in_user
-  before_action :permitted_admin
 
   def create_or_destroy_multiple
     @book          = Book.find(params[:book_id])

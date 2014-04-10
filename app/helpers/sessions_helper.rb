@@ -70,8 +70,4 @@ module SessionsHelper
     end
   end
 
-  def sessionless_user
-    redirect_back_or(books_path) if signed_in?
-  end
-
 end

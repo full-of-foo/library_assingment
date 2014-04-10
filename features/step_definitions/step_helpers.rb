@@ -4,7 +4,11 @@ Given /^I visit "(.+)"$/ do |page_name|
 end
 
 Given /^I visit "(.+)" and get a 404$/ do |page_name|
-  visit page_name
+  step("I visit \"#{page_name}\"")
+  step("I get a 404")
+end
+
+Given /^I get a 404$/ do
   page.status_code.should be(404)
 end
 

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :sessionless_user, only: [:new, :create]
 
   def new
   end
@@ -20,4 +19,5 @@ class SessionsController < ApplicationController
 
     redirect_to root_url
   end
+
 end

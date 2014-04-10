@@ -3,7 +3,7 @@
 Feature: reviews
 
 @reviews-1
-Scenario: Create and update eview as customer
+Scenario: Create and update review as customer
   Given I am signed in as a customer
   And 3 reivews for the book are populated
   And I open the book

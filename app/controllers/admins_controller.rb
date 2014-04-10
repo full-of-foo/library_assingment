@@ -1,7 +1,4 @@
 class AdminsController < ApplicationController
-  before_action :signed_in_user
-  before_action :correct_user,          only: [:edit, :update]
-  before_action :correct_user_or_admin, only: [:edit, :update, :show]
 
   def new
     @user = Admin.new

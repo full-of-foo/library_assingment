@@ -12,7 +12,9 @@ class Authentication
     user.present?
   end
 
+
   private
+
     def user_with_password
       user = User.find_by(email: @params[:session][:email].downcase)
       user && user.authenticate(@params[:session][:password])

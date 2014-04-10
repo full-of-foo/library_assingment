@@ -34,4 +34,5 @@ class ShoppingCartController < ApplicationController
 
     redirect_to cart_show_path
   end
+
 end

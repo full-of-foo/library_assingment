@@ -1,5 +1,4 @@
 class RatingsController < ApplicationController
-  before_action :signed_in_user
 
   def create
     @book   = Book.find(params[:book_id])

@@ -15,8 +15,9 @@
 
         <div class="panel-body clearfix user-show-panel">
           <div class="col-lg-4 pull-right">
-            <%= user_presenter.edit_link   if current_user?(@user) %>
-            <%= user_presenter.delete_link if current_user?(@user) %>
+            <%= user_presenter.edit_link   if current_user?(@customer) %>
+            <%= user_presenter.delete_link if current_user?(@customer) %>
+            <%= user_presenter.purchase_history_link                   %>
           </div>
 
           <% ["first_name", "surname", "email"].each do |attr_str| %>

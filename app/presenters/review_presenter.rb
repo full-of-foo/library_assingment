@@ -10,5 +10,4 @@ class ReviewPresenter < BasePresenter
       method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger"
   end
 
-
 end

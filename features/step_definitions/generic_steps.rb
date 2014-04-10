@@ -8,6 +8,10 @@ Given(/^a customer is populated$/) do
   @customer = FactoryGirl.create(:customer)
 end
 
+Given(/^an admin is populated$/) do
+  @admin = FactoryGirl.create(:admin)
+end
+
 Given(/^a book is populated$/) do
   @book = FactoryGirl.create(:book)
 
