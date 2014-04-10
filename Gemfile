@@ -22,6 +22,7 @@ gem 'stripe-rails'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem "carrierwave"
+gem 'fog'
 
 
 group :development, :test do
@@ -42,3 +43,5 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem 'rails_12factor', group: :production
