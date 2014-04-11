@@ -18,7 +18,7 @@
               </a>
             </h4>
           </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse">
           <div class="panel-body">
 
             <div class="row">
@@ -60,7 +60,7 @@
 
               <div class="col-md-offset-1 col-md-4">
                 <h5>ERD</h5>
-                <img src="models.png" class="img-responsive" alt="ERD" style="max-height: 30pc;">
+                <img src="imgs/models.png" class="img-responsive" alt="ERD" style="max-height: 30pc;">
               </div>
 
             </div>
@@ -80,18 +80,73 @@
             <div class="row">
 
               <div class="col-md-6">
-                <h5>Application Structure</h5>
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                 sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h5>The 'Rails Way'</h5>
+                  <p>
+                    Rails applications are implemented using the <b>Model-View-Controller</b> (MVC) architecture.
+                    Java developers are used to frameworks such as Tapestry and Struts, which are based on MVC.
+                    But Rails takes MVC further: when you develop in Rails, there's a place for each piece of code, and all the
+                    pieces of your application interact in a standard way. It's as if you start out
+                    with the skeleton of an application already prepare. The design of Rails was driven by a couple of key concepts: <i>DRY and convention
+                    over configuration</i>. DRY stands for <b>Don't Repeat Yourself</b> - every piece of
+                    knowledge in a system should be expressed in just one place. Rails uses the
+                    power of Ruby to bring that to life. You'll find very little duplication in a Rails
+                    application; you say what you need to say in one place - a place often suggested
+                    by the conventions of the MVC architecture - and then move on.
+                   <b>Convention over configuration</b> is crucial. It means that Rails has sensible
+                    defaults for just about every aspect of knitting together your application.
+                    Follow the conventions, and you can write a Rails application using less code
+                    than a typical Java web application uses in XML configuration. If you need to
+                    override the conventions, Rails makes that easy, too. Rails enforces a structure for your
+                  application - you develop models, views, and controllers as separate chunks of
+                  functionality and it knits them all together as your program executes.
+                  </p>
               </div>
 
-              <div class="col-md-6">
-                <h5>Illustration</h5>
+
+              <div class="col-md-4">
                 <img src="http://www.sentex.net/~pkomisar/Ruby/Rails2.png" class="img-responsive" alt="app-illustration">
               </div>
 
+              <div class="col-md-2">
+                <img src="imgs/dir.png" class="img-responsive" alt="app-illustration" style="height: 23pc;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <img src="imgs/controllers.png" class="img-responsive" style="height: 26pc;">
+              </div>
+
+              <br>
+              <div class="col-md-6" style="margin-left: -10pc;">
+                <p>
+                  One of
+                  the joys of Rails is that this knitting process is based on the use of intelligent
+                  defaults so that you typically don't need to write any external configuration
+                  metadata to make it all work. This is an example of the <b>Rails philosophy</b> of
+                  favoring <b>convention over configuration</b>.
+                  Incoming requests are first sent to a router, which
+                  works out where in the application the request should be sent and how the
+                  request itself should be parsed. Ultimately, this phase identifies a particular
+                  method (called an action in Rails parlance) somewhere in the controller code.
+                  The action might look at data in the request itself, it might interact with the
+                  model, and it might cause other actions to be invoked. Eventually the action
+                  prepares information for the view, which renders something to the user.
+                  In terms of models, <b>Active Record</b> is the
+                  ORM layer supplied with Rails. It closely follows the standard
+                  ORM model: tables map to classes, rows to objects, and columns to object
+                  attributes. It differs from most other ORM libraries in the way it is configured.
+                  By relying on convention and starting with sensible defaults, Active Record
+                  minimizes the amount of configuration that developers perform.
+                  In Rails, the view is responsible for creating either all or part of a page to be
+                  displayed in a browser At its simplest, a view is a chunk of HTML code that
+                  displays some fixed text. More typically you'll want to include dynamic content
+                  created by the action method in the controller.
+                  In Rails, dynamic content is generated by <b>templates</b>, which come in three flavors.
+                  The most common templating scheme, called <b>ERb</b>, embeds snippets of
+                  Ruby code within a view document.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -493,7 +548,8 @@
                   </div>
                   <div class="col-md-4">
                     <h5>Activity</h5>
-                    <img src="https://github-camo.global.ssl.fastly.net/c6ad360cfb7f2af20c4e7e8eb1c085c2dbe37cdd/68747470733a2f2f6769746875622d696d616765732e73332e616d617a6f6e6177732e636f6d2f626c6f672f323031322f6772617068732e636f6d6d6974732e706e67" class="img-responsive" alt="app-illustration">
+                    <img src="imgs/act.png" class="img-responsive" alt="app-illustration" style="min-height: 10pc;">
+                    <img src="imgs/act2.png" class="img-responsive" alt="app-illustration" style="min-height: 14.5pc;">
                     </div>
                 </div>
               </div>
