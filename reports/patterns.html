@@ -14,7 +14,7 @@
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  Introduction - Language Choice (Important Considerations)
+                  Introduction & Considerations
                 </a>
               </h4>
             </div>
@@ -24,44 +24,86 @@
               <div class="row">
 
                 <div class="col-md-6">
-                  <h5>Gang of Four in Ruby - Really?</h5>
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                   dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                   sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  <h5>"Thick books about design patterns are evidence of an inadequate programming language"</h5>
+                    <p>
+                      Design patterns are the common idioms of code, a good programming language
+                      should make them very easy to implement. An ideal language would so thoroughly
+                      integrate the patterns that they would almost disappear from sight.
+                      The famous Gang of Four book
+                      (Design Patterns: Elements of Reusable Object-Oriented Software by Gamma, Helm,
+                      Johnson, and Vlissides) is required reading for every software engineer today. But actually
+                      implementing many of the patterns described in Design Patterns with the languages
+                      in widespread use today (Java and C++ and perhaps C#) looks and feels a lot
+                      like my 1980s-vintage handcrafted object system. Too painful. Too verbose. Too prone
+                      to bugs.
+                      The Ruby programming language takes us a step closer to a more adequate programming language, a
+                      language that makes implementing patterns so easy that sometimes they fade into the
+                      background. In Ruby, as in Java and C++, you
+                      can implement very sophisticated ideas, but with Ruby it becomes possible to hide the
+                      details of your implementations much more effectively.
+                    </p>
+                </div>
+
+                <div class="col-md-5 col-md-offset-1">
+                  <img src="imgs/java.jpg" class="img-responsive">
+                </div>
+
+              </div>
+
+                <div class="col-md-6">
+                   Building patterns in Ruby is easier for a number of reasons:
+                      <ul>
+                        <li>
+                          Ruby is dynamically typed. By dispensing with static typing, Ruby dramatically
+                          reduces the code overhead of building most programs, including those that implement
+                          patterns.
+                        </li>
+                        <li>
+                          Ruby has code closures. It allows us to pass around chunks of code and associated
+                          scope without having to laboriously construct entire classes and objects that do
+                          nothing else.
+                        </li>
+                        <li>
+                          Ruby classes are real objects. Because a class in Ruby is just another object, we can
+                          do any of the usual runtime things to a Ruby class that we can do to any other
+                          object: We can create totally new classes. We can modify existing classes by adding
+                          or deleting methods. We can even clone a class and change the copy, leaving the
+                          original alone.
+                        </li>
+                        <li>
+                          Ruby has an elegant system of code reuse. In addition to supporting garden-variety
+                          inheritance, Ruby allows us to define mixins, which are a simple but flexible way
+                          to write code that can be shared among several classes.
+                        </li>
+                      </ul>
                 </div>
 
                 <div class="col-md-6">
-                  <h5>Think about this!</h5>
-                  <img src="http://www.blaenkdenum.com/images/books/metaruby.jpg" class="img-responsive" alt="Meta in Ruby">
-                </div>
+                  <h5>"OMG! What about the GoF?"</h5>
+                    <p>
+                      The GoF introduced most of the software engineering
+                      world to the idea of design patterns, where each pattern is a prepackaged solution
+                      to a common design problem. We should look around, they wrote, and identify
+                      common solutions to common problems. We should give each solution a name, and
+                      we should talk about what that solution is good for, when to use it, and when to reach
+                      for something else. And we should write all of this information down, so that over
+                      time our palette of design solutions will grow.
+                      Marrying these lessons with the Ruby and Rails ecosystems, this forwards
+                      the following design pattern principles for this project to base off:
+                      <ul>
+                        <li><b>Separate out the things that change</b> from those that stay the same</li>
+                        <li><b>Program to an interface</b>, not an implementation</li>
+                        <li>Prefer <b>composition over inheritance</b></li>
+                        <li>Delegate, delegate, delegate!</li>
+                        <li>You ain't gonna need it! (<b>YAGNI</b>)</li>
+                      </ul>
 
-              </div>
+                    </p>
+                </div>
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                Introduction - What Patterns You Will Not see
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="row">
 
-                <div class="col-md-8">
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                   dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                   sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
@@ -72,16 +114,43 @@
           </div>
           <div id="collapseThree" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/10473fbc6699cd53ff479c24e154de99e3550d2d?">here</a></p>
 
-              <p>Some actions in a system warrant a Service Object to encapsulate their operation.
-              I reach for Service Objects when an action meets one or more of these criteria:</p>
+              <p>Some actions in a system warrant a Service Object to encapsulate their operation, quite similar to the Gang of Four Strategy pattern.
+              This pattern is a prime example of the  <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single Responsibilty Principle</a> (SRP), of the
+              the Agile <a href="http://en.wikipedia.org/wiki/Solid_(object-oriented_design)">SOLID</a> principles, as it conjoins two or more responsibilities.
+              <p>In developing the authorization feature, the logic of signing-in and signing-out, I found this pattern appropriate:</p>
               <ul>
-                <li>The action is complex (e.g. closing the books at the end of an accounting period)</li>
-                <li>The action reaches across multiple models (e.g. an e-commerce purchase using Order, CreditCard and Customer objects)</li>
-                <li>The action interacts with an external service (e.g. posting to social networks)</li>
-                <li>The action is not a core concern of the underlying model (e.g. sweeping up outdated data after a certain time period)</li>
-                <li>There are multiple ways of performing the action (e.g. authenticating with an access token or password). This is the Gang of Four Strategy pattern</li>
+                <li>unextracted logic was not testable</li>
+                <li>logic was not expressive in controller - its responsibilities were not immediately clear</li>
+                <li>logic expressived should not be the responisblity of a helper module - mixes ambiguous functions</li>
               </ul>
+              <div class="row">
+
+                <div class="col-md-6">
+                  <p class="bg-info">Before (controllers/SessionsController, helpers/SessionHelper)</p>
+                  <div class="col-md-6">
+                    <img src="imgs/servb.png" class="img-responsive">
+                  </div>
+                  <div class="col-md-6">
+                    <img src="imgs/servb2.png" class="img-responsive">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <p class="bg-info">After (controllers/SessionsController, services/Session, services/Authentication)</p>
+                  <div class="col-md-4">
+                    <img src="imgs/serva.png" class="img-responsive" style="height: 15pc;">
+                  </div>
+                  <div class="col-md-4">
+                    <img src="imgs/serva2.png" class="img-responsive" style="height: 15pc;">
+                  </div>
+                  <div class="col-md-4">
+                    <img src="imgs/serva3.png" class="img-responsive" style="height: 15pc;">
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
        </div>
@@ -96,12 +165,42 @@
           </div>
           <div id="collapseFour" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/83a70c12d81f8ea2f2aab998405a7593d7b5bbee">here</a></p>
+              <p>
+              Extract query objects combat complex SQL queries littering the definition of your ActiveRecord subclass (either as scopes or class methods). Each query object
+              is responsible for returning a result set based on business rules. Since ActiveRecord::Relation instances are first class citizens as of Rails, they make a great input to a
+              Query Object. This allows you to combine queries using composition. This pattern helps keeping models <a href="http://www.martinfowler.com/bliki/AnemicDomainModel.html">'skinny'</a> and therefore provides
+              better seperation of concerns in your MVC model-layer. A <a href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a> is an interpreter (Gang of Four), that is, a structure of objects that can form itself into a SQL query.
+              You can create this query by referring to classes and fields rather than tables and columns. In this way those who write the queries can do so independently of the database schema and changes to the schema
+              can be localized in a single place.
+              </p>
+              <p>
+                In developing the Book search filter I requeried a select query on books. This query needed to be used as the chain base for two different query compositions, dependant on the book search inputs.
+                This warranted the use of the Query Object Pattern.
+              </p>
 
-              <p>For complex SQL queries littering the definition of your ActiveRecord subclass (either as scopes or class methods), consider extracting query objects. Each query object
-              is responsible for returning a result set based on business rules. Since ActiveRecord::Relation instances are first class citizens as of Rails 3, they make a great input to a
-              Query Object. This allows you to combine queries using composition</p>
-            </div>
+            <div class="row">
+
+                <div class="col-md-5">
+                  <p class="bg-info">Before (models/Book)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/qb.png" class="img-responsive">
+                  </div>
+                </div>
+
+                <div class="col-md-7">
+                  <p class="bg-info">After (models/Book, queries/BookStockCountQuery)</p>
+                  <div class="col-md-7">
+                    <img src="imgs/qa.png" class="img-responsive" style="height: 4pc;">
+                  </div>
+                  <div class="col-md-5">
+                    <img src="imgs/qa2.png" class="img-responsive" style="height: 9pc;">
+                  </div>
+                </div>
+
+              </div>
           </div>
+       </div>
        </div>
 
        <div class="panel panel-default">
@@ -114,12 +213,42 @@
           </div>
           <div id="collapseFive" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/83a70c12d81f8ea2f2aab998405a7593d7b5bbee">here</a></p>
 
-              <p>Sometimes complex read operations might deserve their own objects. In these cases I reach for a Policy Object. This allows you to keep tangential logic, like which users are
-              considered active for analytics purposes, out of your core domain objects. This Policy Object encapsulates one business rule, that a user is considered active if they have a
-              confirmed email address and have logged in within the last two weeks. You can also use Policy Objects for a group of business rules like an Authorizer that regulates which data a user can access.
-              Policy Objects are similar to Service Objects, but I use the term 'Service Object' for write operations and 'Policy Object' for reads. They are also similar to Query Objects, but Query Objects
+              <p>Sometimes complex read operations might deserve their own objects. In these cases one may reach for a Policy Object. This allows you to keep tangential logic, like which users are
+              considered active for analytics purposes, out of your core domain objects.
+              Policy Objects can also be used for a group of business rules like an Authorizer that regulates which data a user can access.
+              Policy Objects are similar to Service Objects and <a href="http://martinfowler.com/eaaCatalog/dataTransferObject.html">DTOs</a>,
+              but one uses the term 'Service Object' for write operations and 'Policy Object' for reads.
+              They are also similar to Query Objects, but Query Objects
               focus on executing SQL to return a result set, whereas Policy Objects operate on domain models already loaded into memory.</p>
+              <p>
+                In developing features such as the showing and updating of reviews and addresses I encountered the need for this pattern.
+                These resources that a customer own are to only be updatable by that customer, therefore the 'Update' and 'Delete'
+                links for that resouce should only be accessable to that customer. A CustomerOwnershipPolicy is now responsible for this 'has_ownership?'
+                logic.
+              </p>
+            <div class="row">
+
+                <div class="col-md-12">
+                  <p class="bg-info">After (views/reviews/show, polices/customer_ownership_policy, policies/user_policy, controllers/application_controller)</p>
+                  <div class="col-md-3">
+                    <img src="imgs/pola.png" class="img-responsive" style="height: 4pc;">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/pola2.png" class="img-responsive" style="">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/pola3.png" class="img-responsive" style="">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/pola4.png" class="img-responsive" style="">
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
           </div>
        </div>
@@ -134,11 +263,43 @@
           </div>
           <div id="collapseSix" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/e9852cd0dddfc8b3d3010c6130f57fdbaafc24eb">here</a></p>
 
-              <p>Decorators let you layer on functionality to existing operations, and therefore serve a similar purpose to callbacks. For cases where callback logic only needs to run in
-               some circumstances or including it in the model would give the model too many responsibilities, a Decorator is useful.Decorators differ from Service Objects because
-               they layer on responsibilities to existing interfaces. Once decorated, collaborators just treat the FacebookCommentNotifier instance as if it were a Comment.
-                In its standard library, Ruby provides a number of facilities to make building decorators easier with metaprogramming.</p>
+              <p>Decorators let you layer on functionality to existing operations, and therefore serve a similar purpose to callbacks.
+              For cases where callback logic only needs to run in
+               some circumstances or including it in the model would give the model too many responsibilities,
+               a Decorator is useful. Decorators differ from Service Objects because
+               they layer on responsibilities to existing interfaces.</p>
+                <p>In developing the purchasing feature of the application the need for this pattern arose. A purchase transaction involves:</p>
+                <ul>
+                  <li>checking if the stock levels match the carted book amount(s)</li>
+                  <li>recording the customer and billing address</li>
+                  <li>decrementing the stock accordingly</li>
+                  <li>charging the customer</li>
+                </ul>
+                <p>This warranted a purchase transaction to be decorated as a PurchaseCharger, where the PurchaseCharger acts like a Purchase entity
+                by responding to 'save' if the transaction is valid. This prevented layering this transaction logic into the purchase model or purchase
+                controller.</p>
+                 <div class="row">
+
+                <div class="col-md-6">
+                  <p class="bg-info">Before (controllers/purchase_controller)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/decb.png" class="img-responsive" style="">
+                  </div>
+                </div>
+
+              <div class="col-md-6">
+                  <p class="bg-info">After (controllers/purchase_controller, decorators/purchase_charger)</p>
+                  <div class="col-md-6">
+                    <img src="imgs/deca.png" class="img-responsive" style="height: 8pc;">
+                  </div>
+                  <div class="col-md-6">
+                    <img src="imgs/deca2.png" class="img-responsive" style="">
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
        </div>
@@ -153,11 +314,38 @@
           </div>
           <div id="collapseSeven" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/cb8e949cfe7cbab9be2dad131939afcba95b7323">here</a></p>
 
-              <p>The Presenter pattern addresses bloated controllers and views containing logic in concert by creating a class representation of the
+              <p>The <a href="http://martinfowler.com/eaaDev/PresentationModel.html">Presenter pattern</a> addresses bloated controllers and views containing logic in concert by creating a class representation of the
               state of the view. An architecture that uses the Presenter pattern provides view specific data as attributes of an instance of the Presenter.
               The Presenter's state is an aggregation of model and user entered data. Presenters are nice if you have any sort of display logic in your code,
-               want to remove logic from the view, or find yourself checking lots of permissions for display purposes in a view.</p>
+               want to remove logic from the view.</p>
+               <p>I had found that my views had become quite convoluted with logic around displaying certain buttons/links in the following circumstances:</p>
+               <ul>
+                 <li>is the current user a Customer</li>
+                 <li>is the current user a Admin</li>
+                 <li>does the current user own the presented resource(s) (review, address and purchase history)</li>
+               </ul>
+               <p>I found that applying the Presenter pattern to my views was appropriate here. My views became more comprehensive and declaritive, providing a
+               greater separation of concerns.</p>
+
+               <div class="row">
+
+                <div class="col-md-6">
+                  <p class="bg-info">Before (views/books/show)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/presb.png" class="img-responsive" style="height: 31pc;">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <p class="bg-info">After (views/books/show)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/presa.png" class="img-responsive" style="height: 31pc;">
+                  </div>
+                </div>
+
+               </div>
             </div>
           </div>
        </div>
@@ -166,14 +354,53 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
-                6) Single and Nested View Partial Structuring Patterns
+                6) Extract Views - Single and Nested View Partial Structuring
               </a>
             </h4>
           </div>
           <div id="collapseEight" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/40f39cc867db629fb77e15958350dc1bb7de3b38">here</a></p>
 
-              <p></p>
+              <p>Partial templates are another device for breaking the rendering process into more manageable chunks.
+               With a partial, you can move the code for rendering a particular piece of a response to its own file.
+               Extracting views is one of the most common Rails refactorings one does, it allows for both the simplifying and
+               reuse of view markup.</p>
+               <p>Upon completing the reviews and ratings feature I noticed that my views had significantly grown in complexity:</p>
+               <ul>
+                 <li>Individual views now represented more that one model
+                 <ul>
+                  <li>Book show (book show + ratings show, new and update + reviews index)</li>
+                  <li>Customer show (customer show + addresses index)</li>
+                </ul></li>
+                <li>View markup was being duplicated
+                <ul>
+                  <li>Every 'new' and 'edit' form markup for models were the same</li>
+                </ul></li>
+               </ul>
+               <p>For example, the book 'show' template had contained 87 lines of markup</p>
+
+               <div class="row">
+
+                  <p class="bg-info">After (views/books/show, views/books/_details, views/books/_reviews, views/books/_review)</p>
+                  <div class="col-md-2">
+                    <img src="imgs/para.png" class="img-responsive" style="">
+                  </div>
+
+                  <div class="col-md-4">
+                    <img src="imgs/para2.png" class="img-responsive" style=" height: 29pc;">
+                  </div>
+
+                  <div class="col-md-4">
+                    <img src="imgs/para3.png" class="img-responsive" style=" height: 27pc;">
+                  </div>
+
+                  <div class="col-md-2">
+                    <img src="imgs/para4.png" class="img-responsive" style=" height: 5pc;">
+                  </div>
+
+               </div>
+
             </div>
           </div>
        </div>
@@ -182,14 +409,129 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
-                7) Meta Programming Patterns - Lets see what we have covered
+                7) Several Metaprogramming Patterns - Runtime adaption, program generation and language customization
               </a>
             </h4>
           </div>
           <div id="collapseTen" class="panel-collapse collapse">
             <div class="panel-body">
+              <p>
+                Metaprogramming means
+                to have a rich semantic model of the program that is represented as language constructs.
+                The careful utilization of the constructs allows changing programs and sometimes even
+                the semantics of other language constructs. The Ruby programming language offers metaprogramming facilities to a degree that
+                developers use it unconsciously.
+              </p>
+              <h5>1) Dynamic Method Missing Proxy</h5>
+              <p>
+                A <a href="http://en.wikipedia.org/wiki/Proxy_pattern">proxy</a>, in its most general form, is a class functioning
+                as an interface to something else. We can use Ruby's method lookup mechanism to develop object or module scoped proxies
+                easily. Ruby's 'Object' instance method 'method_missing' is invoked when an object is sent a message it cannot handle.
+              </p>
+              <p>
+                In developing my peresentors I found that there existed duplication around the creation of html tags.
+              </p>
+                <ul>
+                  <li>through the view helper 'present' (helpers/ApplicationHelper), a presenter object recieves a 'template' attribute on init - 'self', the view-template scope in which it is called (fig. 1, 2)</li>
+                  <li>BasePresenter's "method_missing" method sends any unknown method to the view template (fig. 3)</li>
+                  <li>All methods available in the '@template' scope (i.e. ActionView::Helpers::TagHelper module) are now available to the
+                  BasePresenter and its chidren - for example AddressPresenter can now call methods such as 'content_tag' rather than '@template.content_tag'
+                  (fig. 4)</li>
+                </ul>
+              <div class="row">
+                  <div class="col-md-3">
+                    <img src="imgs/prox3.png" class="img-responsive" style="">
+                  </div>
 
-              <p></p>
+                  <div class="col-md-2">
+                    <img src="imgs/prox.png" class="img-responsive" style="">
+                  </div>
+
+                  <div class="col-md-2">
+                    <img src="imgs/prox4.png" class="img-responsive" style="">
+                  </div>
+
+                  <div class="col-md-5">
+                    <img src="imgs/prox2.png" class="img-responsive" style="height: 13pc; width: 22pc; ">
+                  </div>
+
+               </div>
+
+                <br>
+                <h5>2) Dynamic Extract Method</h5>
+                <p>
+                  Ruby's "Module" object's "define_method" defines an instance method in the receiver, such allows for the easy addition
+                  of instance methods to a class or module at runtime. The method parameter can be a Proc, a Method or an UnboundMethod object.
+                  In Ruby, dynamic extract methods may be favoured over non-dynamic ones where the extraction is not overly-complicated and
+                  the resulting code would be more expressive.
+                </p>
+                <p>In my LabeledFormBuilder class, I override three methods (text_field, text_area and password_field). I require the exact same
+                code to be executed for each. For nondynamic extraction it would involve 'extracting' this duplicate logic to one private method,
+                and defining each of these three overriding methods that simply call that one extracted method. This seems verbose. Consider this
+                dynamic application:</p>
+                <div class="row">
+                    <img src="imgs/dynex.png" class="img-responsive" style="height: 14pc; ">
+                </div>
+
+                <br>
+                <h5>3) Reopening and closing classes - Monkey Patching in methods</h5>
+                <p>
+                  "Monkey patching" refers to the practice of extending or
+                   modifying existing code by changing classes at run-time. It is a powerful technique that
+                   has become popular in the Ruby community at least in part because the Ruby language makes it
+                    so easy. Any class can be re-opened at any time and amended in any way.
+                </p>
+                <p>In developing the ratings feature I found the need to patch Float. Rating amounts can range from
+                0.5 to 5.0 in intervals of 0.5. I required a short-hand of rounding any float in this range to the nearest
+                0.5 interval. The patched 'round_point5' instance method solved this:
+                </p>
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <img src="imgs/patch.png" class="img-responsive" style="">
+                  </div>
+
+                  <div class="col-md-9">
+                    <img src="imgs/patch2.png" class="img-responsive" style="">
+                  </div>
+
+                </div>
+
+                <br>
+                <h5>4) Adding methods as operators - Monkey Patching a module</h5>
+                <p>
+                  Ruby allows for the overloading of most the common langauge operators. Similarly, as everything is an object (methods, classes, operators, etc.)
+                  one can define unimplemented operators/objects of a class as methods.
+                </p>
+                <p>As the complexity of the book entity grew so too did the queries of the books. I found that the typical verbose and chained queries
+                were not adequate. I needed to compose and structure these queries in more expressive manner, promoting the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>.
+                Consider the following:
+                </p>
+                <ul>
+                  <li>A long chained query - closely coupled and unexpressive (fig. 1)</li>
+                  <li>A custom ActiveRecord::Relation module to define ActiveRecord::Relation operators (fig. 2)</li>
+                  <li>Dynamically patching of ActiveRecord::Relation by including this module (fig. 3)</li>
+                  <li>More composed and expressive query (fig. 4)</li>
+                </ul>
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <img src="imgs/patb.png" class="img-responsive" style="height: 1pc;">
+                  </div>
+
+                  <div class="col-md-3">
+                    <img src="imgs/pata3.png" class="img-responsive" style="">
+                  </div>
+
+                  <div class="col-md-3">
+                    <img src="imgs/pata2.png" class="img-responsive" style="height: 4pc;">
+                  </div>
+
+                  <div class="col-md-3">
+                    <img src="imgs/pata.png" class="img-responsive" style="height: 1.4pc;">
+                  </div>
+
+                </div>
             </div>
           </div>
        </div>
@@ -204,13 +546,187 @@
           </div>
           <div id="collapse11" class="panel-collapse collapse">
             <div class="panel-body">
+              <p class="bg-info">Commited works avalible <a href="https://github.com/full-of-foo/library_assingment/commit/ccdd5cb110b7108cdafb0d1d56735a7d0599e75c">here</a></p>
 
-              <p> simple objects whose equality is dependent on their value rather than an identity.
-              They are usually immutable. Date, URI, and Pathname are examples from Ruby’s standard library,
-              but your application can (and almost certainly should) define domain-specific Value Objects as well.
-              Extracting them from ActiveRecords is low hanging refactoring fruit. In Rails, Value Objects are great
-              when you have an attribute or small group of attributes that have logic associated with them.
-              Anything more than basic text fields and counters are candidates for Value Object extraction.</p>
+              <p>
+                The <a href="http://martinfowler.com/bliki/ValueObject.html">Value Object</a> pattern invloves
+                simple objects whose equality is dependent on their value rather than an identity.
+                They are usually immutable. Date, URI, and Pathname are examples from Ruby's standard library,
+                but your application can (and almost certainly should) define domain-specific Value Objects as well.
+                Extracting them from ActiveRecords is low hanging refactoring fruit. In Rails, Value Objects are great
+                when you have an attribute or small group of attributes that have logic associated with them.
+                Anything more than basic text fields and counters are candidates for Value Object extraction.
+              </p>
+              <p>
+                In developing the authorization feature I found the need for applying this pattern. When interceping
+                requests, I needed to classify my known routes via controller and action. I compare the incoming route's equality
+                against know sets of routes (sessionless-routes, admin-routes and customer-routes) through a PermittedResourcePolicy.
+                This policy's method ('permitted?') is utilized in a 'before_filter' ('authorize') in the 'ApplicationController',
+                therefore it runs before every request. Consider the following:
+              </p>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <p class="bg-info">Value Object (value_objects/route)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/val3.png" class="img-responsive" style="height: 19pc;">
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+                  <p class="bg-info">Policy (policies/permitted_resource_policy, controllers/application_controller)</p>
+                  <div class="col-md-6">
+                    <img src="imgs/val.png" class="img-responsive" style="height: 13pc;">
+                  </div>
+                  <div class="col-md-6">
+                    <img src="imgs/val2.png" class="img-responsive" style="height: 12pc;">
+                  </div>
+                </div>
+
+               </div>
+
+            </div>
+          </div>
+       </div>
+
+       <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse12">
+                9) Builder Patterns
+              </a>
+            </h4>
+          </div>
+          <div id="collapse12" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              <p>
+              Factories in Ruby are similar to factories in other programming languages, such as C++.
+              The idea is to have a class (or static) method which produces instances of the desired class.
+              Factories are useful when the specific subclass one wants is unknown at compile time. Hence,
+              using a super class to initialize a subclass depending on parameters allows run time construction of the correct class.
+              </p>
+              <p>
+                As the number of entities grew which required 'new' and/or 'edit' forms, duplications arose for their form's markup.
+                The styling/markup in my forms are consistent throughout the application:</p>
+                <ul>
+                  <li>All inputs are proceed by:
+                    <ul>
+                      <li>a 'pushing' div</li>
+                      <li>a custom-named label with a fixed css class</li>
+                    </ul></li>
+                    <li>All buttons are styled the same and are centered</li>
+                </ul>
+              <p>
+                This warranted a domain specific factory/builder ('labeled_form_for'), of the ActionView::Helpers::FormBuilder, rather than the base 'form_for' builder.
+              </p>
+
+              <div class="row">
+
+                <div class="col-md-3">
+                  <p class="bg-info">Before (views/addresses/edit)</p>
+                  <div class="col-md-12">
+                    <img src="imgs/bulb.png" class="img-responsive" style="height: 22pc;">
+                  </div>
+                </div>
+
+                <div class="col-md-9">
+                  <p class="bg-info">After (form_builders/labeled_form_builder, helpers/application_helper, views/addresses/edit, views/addresses/_fields)</p>
+                  <div class="col-md-3">
+                    <img src="imgs/bula4.png" class="img-responsive" style="height: 13pc;">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/bula3.png" class="img-responsive" style="height: 4pc;">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/bula.png" class="img-responsive" style="height: 4pc;">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="imgs/bula2.png" class="img-responsive" style="height: 5pc;">
+                  </div>
+                </div>
+
+               </div>
+
+            </div>
+          </div>
+       </div>
+
+       <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse13">
+                Final Thoughts
+              </a>
+            </h4>
+          </div>
+          <div id="collapse13" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              <p>
+                From this project I hope to have demonstrated that the duck-typed, dynamic nature of
+                Ruby changes the way we solve many programming problems. If we need to vary an algorithm
+                that is buried deep in the depths of some class, we might build a Strategy/Service object,
+                but then again we might just pass in a code block. Implementing patterns like Proxy and
+                Decorator - the ones that rely most heavily on delegation - ceases being an exercise in
+                cranking out boilerplate code. The dynamic and reflective features of Ruby let us embrace
+                the idea of a factory while going beyond the inheritance-bound limitations of the classic
+                Abstract Factory and Factory Method patterns.
+              </p>
+              <p>
+                While the appearance of GoF's
+                Design Patterns constituted a giant leap forward in the art of writing programs, it has
+                been almost a decade and a half since that book was published. It would be a sad commentary
+                on our profession if, all these years later, we were still solving exactly the same
+                problems in exactly the same ways. Many of the original GoF patterns are truly longlived
+                solutions, ideas that are likely to be with us for a very long time.
+                Most of the differences that you will see when you revisit the original Design
+                Patterns problems in Ruby stem from the almost unbounded flexibility of the language.
+              </p>
+              <p>
+                When you are programming in Ruby, if you are unhappy with the behavior or
+                interface of some class, you have options. You can certainly wrap instances of the
+                offending class with an adapter. You might decorate or proxy it. You might create a
+                factory to produce those wrapped instances. You might make the factory available as
+                a singleton. If you are dealing with some simple object that you understand, you can just
+                modify the object, morphing it to have precisely the behavior that you need. With
+                Ruby, we no longer need to pull out relatively heavyweight design patterns to solve
+                tiny problems. Instead, Ruby allows you to do simple things simply.
+              </p>
+
+              <p class="bg-info">Tut tut, no async patterns like in Node?</p>
+              <p>No, never! Similar to Python, Ruby-MRI is subject to a <a href="http://researcher.watson.ibm.com/researcher/files/jp-ODAIRA/PPoPP2014_RubyGILHTM.pdf">GIL</a>!</p>
+
+              <p class="bg-info">Tut tut, no transactions?</p>
+              <p>ActiveRecord magic! ORM handles this.</p>
+
+              <p class="bg-info">Tut tut, didn't see much behavioural patterns?</p>
+              <p>Consider our langauge points in the "Introduction & Considerations" section, and then note why the "Several Metaprogramming Patterns" is so large</p>
+
+              <p class="bg-info">Eh yeah, that's all great but why did you not comment your code?</p>
+              <p>Double-edged sword - always a debate in the Ruby community. <a href="http://blog.codinghorror.com/coding-without-comments/">Consensus</a>: don't do it, let the your code expressiveness
+              and naming do that job</p>
+
+              <p class="bg-info">Hold on, wait, I got you! You forgot to write tests, right?</p>
+              <p>Never :)</p>
+              <p>High-level cucumber tests with the capybara DSL worked out quite well:</p>
+              <ul>
+                <li>Translated each requirement user story to a cucumber feature's scenario</li>
+                <li>Allowed for a TDD workflow</li>
+                <li>Provided a regression suite of tests</li>
+              </ul>
+
+              <div class="col-md-12">
+                  <div class="col-md-3">
+                    <img src="imgs/tests.png" class="img-responsive" style="">
+                  </div>
+                  <div class="col-md-9">
+                    <img src="imgs/tests2.png" class="img-responsive" style="height: 20pc;">
+                  </div>
+
+                </div>
+
             </div>
           </div>
        </div>
