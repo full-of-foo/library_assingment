@@ -1,4 +1,4 @@
-== Library Design Patterns Assignment
+=== Library Design Patterns Assignment
 
 This assignments documentation can be located at the following:
 

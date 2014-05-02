@@ -31,15 +31,16 @@ class ApplicationController < ActionController::Base
     def authorize
       if !current_permission.permitted?
         if current_user
-          flash[:warning] = "Not authorized"
-          redirect_to books_path
+          if !current_permission.route.sessionless?
+            flash[:warning] = "Not authorized"
+          end
+            redirect_to books_path
         else
           store_location
           flash[:warning] = "Please sign in"
           redirect_to signin_url
         end
       end
-      redirect_to(books_path) if current_user && current_permission.route.sessionless?
     end
 
 end
